@@ -1,0 +1,5 @@
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Entidad\bin\Debug\Entidad.dll
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Entidad\bin\Debug\Entidad.pdb
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Entidad\obj\Debug\Entidad.dll
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Entidad\obj\Debug\Entidad.pdb
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
