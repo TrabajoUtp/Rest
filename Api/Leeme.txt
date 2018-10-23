@@ -1,0 +1,19 @@
+﻿
+Frank Cochachin
+
+Instalacion de Paquetes
+* Owin
+* Microsoft.Owin
+* Microsoft.Owin.Security
+* Microsoft.Owin.Security.OAuth (Actualiza el paquete de NewtonSoft Json)
+* Microsoft.Owin.Cors
+* Microsoft.Owin.Host.SystemWeb (Es el que permite evaluar la configuracion OWIN antes de los demas controles)
+* Newtonsoft.Json (Actualizar a la ultima version)
+
+
+Documentacion automática
+* Ir a propiedades del proyecto (API), en la pestaña Compilación ir al bloque "Resultado", activar la opcion de "Archivo de Documentacion XML" y colocar en la ruta App_Data el Path.
+* Ir a : Areas/HelpPage/App_Start/HelpPageConfig.cs
+* En el método Register, descomentar esta linea : config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/Documentacion.xml")));
+
+
