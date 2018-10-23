@@ -1,0 +1,12 @@
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\bin\Debug\Datos.dll
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\bin\Debug\Datos.pdb
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\bin\Debug\Dapper.dll
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\bin\Debug\Dapper.FluentColumnMapping.dll
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\bin\Debug\Dapper.xml
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\bin\Debug\Dapper.FluentColumnMapping.pdb
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\bin\Debug\Dapper.FluentColumnMapping.xml
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\obj\Debug\Datos.dll
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\obj\Debug\Datos.pdb
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\bin\Debug\Entidad.dll
+C:\Users\Frank-PC\Desktop\EjemploAwait\SlnCochachin\Datos\bin\Debug\Entidad.pdb
