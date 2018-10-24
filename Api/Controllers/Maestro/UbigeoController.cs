@@ -27,9 +27,9 @@ namespace Api.Controllers.Maestro
         }
 
         [Route("GetCombo")]
-        public List<DepartamentoDto> GetCombo(int idPais)
+        public List<DepartamentoDto> GetCombo(int idPais, DropDownItem opcionCombo)
         {
-            return _lnUbigeo.ObtenerCombo(idPais, DropDownItem.Seleccione);
+            return _lnUbigeo.ObtenerCombo(idPais, opcionCombo);
         }
 
         // POST: api/Ubigeo
