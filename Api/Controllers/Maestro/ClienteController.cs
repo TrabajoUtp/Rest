@@ -7,6 +7,7 @@ using System.Web.Http;
 using Entidad.Dto.Maestro;
 using Entidad.Dto.Seguridad;
 using Entidad.Entidades.Maestro;
+using Entidad.Vo;
 using Negocio.Maestro;
 
 namespace Api.Controllers.Maestro
@@ -16,15 +17,15 @@ namespace Api.Controllers.Maestro
     {
         private readonly LnCliente _lnCliente = new LnCliente();
 
-        // GET: api/Rol
+        // GET: api/Cliente
         [HttpPost]
         [AcceptVerbs("POST")]
         [Route("Get")]
         public IHttpActionResult Get([FromBody]ClienteFiltro filtro)
         {
             var data = _lnCliente.Obtener(filtro);
-            int totalRegistros = 0;//data.Count;
-            //int totalItems = 0;
+            int totalRegistros = 0;
+
             if (data.Any())
             {
                 totalRegistros = data.First().TotalItems;
@@ -35,7 +36,7 @@ namespace Api.Controllers.Maestro
                 draw = filtro.Draw,
                 recordsTotal = totalRegistros,
                 recordsFiltered = totalRegistros,
-                data = data
+                data
             });
         }
 
@@ -43,6 +44,12 @@ namespace Api.Controllers.Maestro
         public Cliente Get(int idCliente)
         {
             return _lnCliente.ObtenerPorId(idCliente);
+        }
+
+        [Route("GetCombo")]
+        public List<Cliente> GetCombo(DropDownItem opcionCombo, Int32 idEstado)
+        {
+            return _lnCliente.ObtenerCombo(opcionCombo, idEstado);
         }
 
         // POST: api/Cliente
@@ -64,9 +71,9 @@ namespace Api.Controllers.Maestro
         [HttpPost]
         [AcceptVerbs("POST")]
         [Route("Delete")]
-        public Int32 Delete(int id)
+        public Int32 Delete([FromBody]Cliente cliente)
         {
-            return _lnCliente.Eliminar(id);
+            return _lnCliente.Eliminar(cliente.IdCliente);
         }
     }
 }

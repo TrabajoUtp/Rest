@@ -41,11 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\Gestion\FaqDto.cs" />
+    <Compile Include="Dto\Gestion\FaqFiltro.cs" />
+    <Compile Include="Dto\Maestro\CategoriaFaqDto.cs" />
+    <Compile Include="Dto\Maestro\CategoriaFaqFiltro.cs" />
     <Compile Include="Dto\Maestro\ClienteDto.cs" />
     <Compile Include="Dto\Maestro\ClienteFiltro.cs" />
     <Compile Include="Dto\Maestro\DepartamentoDto.cs" />
     <Compile Include="Dto\Paginacion.cs" />
     <Compile Include="Dto\Seguridad\RolFiltro.cs" />
+    <Compile Include="Entidades\Gestion\Faq.cs" />
+    <Compile Include="Entidades\Maestro\CategoriaFaq.cs" />
     <Compile Include="Entidades\Maestro\Cliente.cs" />
     <Compile Include="Entidades\Maestro\Contacto.cs" />
     <Compile Include="Entidades\Maestro\Departamento.cs" />
@@ -69,6 +75,7 @@
   <ItemGroup>
     <None Include="Properties\packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

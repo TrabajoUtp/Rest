@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Datos.Maestro;
 using Entidad.Dto.Maestro;
 using Entidad.Entidades.Maestro;
+using Entidad.Vo;
 
 namespace Negocio.Maestro
 {
@@ -10,12 +11,27 @@ namespace Negocio.Maestro
     {
         private readonly AdCliente _adCliente = new AdCliente();
 
-        //public Task<List<ClienteDto>> Obtener(ClienteFiltro filtro)
         public List<ClienteDto> Obtener(ClienteFiltro filtro)
         {
             return _adCliente.Obtener(filtro);
-            //return Task.Factory.StartNew(() => _adCliente.Obtener(filtro));
-            //return Task.Run(() => _adContacto.ObtenerContactos());
+        }
+
+        public List<Cliente> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
+        {
+            var lista = _adCliente.ObtenerCombo(idEstado);
+            switch (opcionCombo)
+            {
+                case DropDownItem.Ninguno:
+                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Ninguno" });
+                    break;
+                case DropDownItem.Seleccione:
+                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Seleccione" });
+                    break;
+                case DropDownItem.Todos:
+                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Todos" });
+                    break;
+            }
+            return lista;
         }
 
         public Cliente ObtenerPorId(int idCliente)

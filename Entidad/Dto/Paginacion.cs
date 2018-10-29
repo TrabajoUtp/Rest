@@ -2,7 +2,7 @@
 
 namespace Entidad.Dto
 {
-    public class Paginacion
+    public class Paginacion2
     {
         public Int32 NumeroPagina { get; set; }
         public Int32 CantidadRegistros { get; set; }

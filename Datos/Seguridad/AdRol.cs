@@ -15,7 +15,7 @@ namespace Datos.Seguridad
         public List<RolDto> Obtener(RolFiltro filtro)
         {
 
-            List<RolDto> listaRol;
+            List<RolDto> lista;
 
             try
             {
@@ -27,14 +27,14 @@ namespace Datos.Seguridad
                         cn.Open();
                     }
 
-                    listaRol = cn.Query<RolDto>(query, new
+                    lista = cn.Query<RolDto>(query, new
                     {
                         filtro.Nombre,
                         filtro.IdEstado,
-                        filtro.NumeroPagina,
-                        filtro.CantidadRegistros,
-                        filtro.ColumnaOrden,
-                        filtro.DireccionOrden
+                        NumeroPagina = filtro.NumberPage,
+                        CantidadRegistros = filtro.Length,
+                        ColumnaOrden = filtro.ColumnOrder,
+                        DireccionOrden = filtro.OrderDirection
                     },
                     commandType: CommandType.StoredProcedure).ToList();
 
@@ -45,7 +45,7 @@ namespace Datos.Seguridad
             {
                 throw new Exception(ex.Message);
             }
-            return listaRol;
+            return lista;
         }
 
         public RolDto ObtenerPorId(int idRol)

@@ -10,9 +10,7 @@ namespace Entidad.Entidades.Maestro
         public String RazonSocial { get; set; }
         public String Direccion { get; set; }
         public Int32 IdPais { get; set; }
-        public Int32 IdDepartamento { get; set; }
-        public Int32 IdProvincia { get; set; }
-        public Int32 IdDistrito { get; set; }
+        public Int32 IdUbigeo { get; set; }
         public DateTime FechaRegistro { get; set; }
         public Int32 IdUsuario { get; set; }
         public Int32 IdEstado { get; set; }

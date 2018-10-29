@@ -40,13 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gestion\LnFaq.cs" />
+    <Compile Include="Maestro\LnCategoriaFaq.cs" />
     <Compile Include="Maestro\LnCliente.cs" />
     <Compile Include="Maestro\LnContacto.cs" />
-    <Compile Include="Maestro\LnDepartamento.cs" />
-    <Compile Include="Maestro\LnDistrito.cs" />
     <Compile Include="Maestro\LnEstado.cs" />
     <Compile Include="Maestro\LnPais.cs" />
-    <Compile Include="Maestro\LnProvincia.cs" />
     <Compile Include="Maestro\LnUbigeo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad\LnLogin.cs" />

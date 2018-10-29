@@ -16,13 +16,13 @@ namespace Negocio.Maestro
             switch (opcionCombo)
             {
                 case DropDownItem.Ninguno:
-                    lista.Insert(0, new DepartamentoDto { CodigoDepartamento = "00", NombreDepartamento = "Ninguno" });
+                    lista.Insert(0, new DepartamentoDto { CodigoDepartamento = "00", NombreDepartamento = "Ninguno", ListaUbigeo = new List<UbigeoDto>() });
                     break;
                 case DropDownItem.Seleccione:
-                    lista.Insert(0, new DepartamentoDto { CodigoDepartamento = "00", NombreDepartamento = "Seleccione" });
+                    lista.Insert(0, new DepartamentoDto { CodigoDepartamento = "00", NombreDepartamento = "Seleccione", ListaUbigeo = new List<UbigeoDto>() });
                     break;
                 case DropDownItem.Todos:
-                    lista.Insert(0, new DepartamentoDto { CodigoDepartamento = "00", NombreDepartamento = "Todos" });
+                    lista.Insert(0, new DepartamentoDto { CodigoDepartamento = "00", NombreDepartamento = "Todos", ListaUbigeo = new List<UbigeoDto>() });
                     break;
             }
             return lista;

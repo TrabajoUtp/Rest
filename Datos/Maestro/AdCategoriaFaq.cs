@@ -10,16 +10,16 @@ using Entidad.Vo;
 
 namespace Datos.Maestro
 {
-    public class AdCliente
+    public class AdCategoriaFaq
     {
-        public List<ClienteDto> Obtener(ClienteFiltro filtro)
+        public List<CategoriaFaqDto> Obtener(CategoriaFaqFiltro filtro)
         {
 
-            List<ClienteDto> lista;
+            List<CategoriaFaqDto> lista;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Cliente_Obtener;
+                const string query = StoreProcedure.Maestro_usp_CategoriaFaq_Obtener;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -27,17 +27,17 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    lista = cn.Query<ClienteDto>(query, new
-                    {
-                        filtro.NumeroDocumento,
-                        filtro.RazonSocial,
-                        filtro.IdEstado,
-                        NumeroPagina = filtro.NumberPage,
-                        CantidadRegistros = filtro.Length,
-                        ColumnaOrden = filtro.ColumnOrder,
-                        DireccionOrden = filtro.OrderDirection
-                    },
-                    commandType: CommandType.StoredProcedure).ToList();
+                    lista = cn.Query<CategoriaFaqDto>(query, new
+                        {
+                            filtro.Nombre,
+                            filtro.Observacion,
+                            filtro.IdEstado,
+                            NumeroPagina = filtro.NumberPage,
+                            CantidadRegistros = filtro.Length,
+                            ColumnaOrden = filtro.ColumnOrder,
+                            DireccionOrden = filtro.OrderDirection
+                        },
+                        commandType: CommandType.StoredProcedure).ToList();
 
                 }
 
@@ -49,10 +49,10 @@ namespace Datos.Maestro
             return lista;
         }
 
-        public List<Cliente> ObtenerCombo(Int32 idEstado)
+        public List<CategoriaFaq> ObtenerCombo(Int32 idEstado)
         {
-            List<Cliente> lista;
-            const string query = StoreProcedure.Maestro_usp_Cliente_Combo;
+            List<CategoriaFaq> lista;
+            const string query = StoreProcedure.Maestro_usp_CategoriaFaq_Combo;
 
             using (var cn = HelperClass.ObtenerConeccion())
             {
@@ -61,23 +61,24 @@ namespace Datos.Maestro
                     cn.Open();
                 }
 
-                lista = cn.Query<Cliente>(query, new
-                {
-                    IdEstado = idEstado
-                }, commandType: CommandType.StoredProcedure).ToList();
+                lista = cn.Query<CategoriaFaq>(query, new
+                    {
+                        IdEstado = idEstado
+                    },
+                    commandType: CommandType.StoredProcedure).ToList();
 
             }
             return lista;
         }
 
-        public Cliente ObtenerPorId(int idCliente)
+        public CategoriaFaq ObtenerPorId(int idCategoriaFaq)
         {
 
-            Cliente entidad;
+            CategoriaFaq entidad;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Cliente_ObtenerPorId;
+                const string query = StoreProcedure.Maestro_usp_CategoriaFaq_ObtenerPorId;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -85,11 +86,11 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    entidad = cn.Query<Cliente>(query, new
-                    {
-                        IdCliente = idCliente
-                    },
-                    commandType: CommandType.StoredProcedure).FirstOrDefault();
+                    entidad = cn.Query<CategoriaFaq>(query, new
+                        {
+                            IdCategoriaFaq = idCategoriaFaq
+                        },
+                        commandType: CommandType.StoredProcedure).FirstOrDefault();
 
                 }
 
@@ -101,83 +102,12 @@ namespace Datos.Maestro
             return entidad;
         }
 
-        public Int32 Registrar(Cliente cliente)
+        public Int32 Registrar(CategoriaFaq categoriaFaq)
         {
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Cliente_Registrar;
-                using (var cn = HelperClass.ObtenerConeccion())
-                {
-                    if (cn.State == ConnectionState.Closed)
-                    {
-                        cn.Open();
-                    }
-
-                    respuesta = cn.Execute(query, new
-                    {
-                        cliente.NumeroDocumento,
-                        cliente.RazonSocial,
-                        cliente.Direccion,
-                        cliente.IdPais,
-                        cliente.IdUbigeo,
-                        cliente.IdUsuario,
-                        cliente.IdEstado
-                    },
-                    commandType: CommandType.StoredProcedure);
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return respuesta;
-        }
-
-        public Int32 Modificar(Cliente cliente)
-        {
-            Int32 respuesta;
-            try
-            {
-                const string query = StoreProcedure.Maestro_usp_Cliente_Modificar;
-                using (var cn = HelperClass.ObtenerConeccion())
-                {
-                    if (cn.State == ConnectionState.Closed)
-                    {
-                        cn.Open();
-                    }
-
-                    respuesta = cn.Execute(query, new
-                    {
-                        cliente.IdCliente,
-                        cliente.NumeroDocumento,
-                        cliente.RazonSocial,
-                        cliente.Direccion,
-                        cliente.IdPais,
-                        cliente.IdUbigeo,
-                        cliente.IdUsuario,
-                        cliente.IdEstado
-                    },
-                    commandType: CommandType.StoredProcedure);
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return respuesta;
-        }
-
-        public Int32 Eliminar(Int32 idCliente)
-        {
-            Int32 respuesta;
-            try
-            {
-                const string query = StoreProcedure.Maestro_usp_Cliente_Eliminar;
+                const string query = StoreProcedure.Maestro_usp_CategoriaFaq_Registrar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -187,7 +117,10 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            IdCliente = idCliente
+                            categoriaFaq.Nombre,
+                            categoriaFaq.Observacion,
+                            categoriaFaq.IdUsuario,
+                            categoriaFaq.IdEstado
                         },
                         commandType: CommandType.StoredProcedure);
 
@@ -201,5 +134,66 @@ namespace Datos.Maestro
             return respuesta;
         }
 
+        public Int32 Modificar(CategoriaFaq categoriaFaq)
+        {
+            Int32 respuesta;
+            try
+            {
+                const string query = StoreProcedure.Maestro_usp_CategoriaFaq_Modificar;
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    respuesta = cn.Execute(query, new
+                        {
+                            categoriaFaq.IdCategoriaFaq,
+                            categoriaFaq.Nombre,
+                            categoriaFaq.Observacion,
+                            categoriaFaq.IdUsuario,
+                            categoriaFaq.IdEstado
+                    },
+                        commandType: CommandType.StoredProcedure);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return respuesta;
+        }
+
+        public Int32 Eliminar(Int32 idCategoriaFaq)
+        {
+            Int32 respuesta;
+            try
+            {
+                const string query = StoreProcedure.Maestro_usp_CategoriaFaq_Eliminar;
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    respuesta = cn.Execute(query, new
+                        {
+                            IdCategoriaFaq = idCategoriaFaq
+                        },
+                        commandType: CommandType.StoredProcedure);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return respuesta;
+        }
     }
 }
