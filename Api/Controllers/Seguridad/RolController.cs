@@ -17,9 +17,9 @@ namespace Api.Controllers.Seguridad
         [HttpPost]
         [AcceptVerbs("POST")]
         [Route("Get")]
-        public List<RolDto> Get([FromBody]RolFiltro filtro)
+        public IHttpActionResult Get([FromBody]RolFiltro filtro)
         {
-            return _lnRol.Obtener(filtro);
+            return Json(_lnRol.Obtener(filtro));
         }
 
         // GET: api/Rol/5

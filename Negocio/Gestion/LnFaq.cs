@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Datos.Gestion;
 using Entidad.Dto.Gestion;
 using Entidad.Entidades.Gestion;
+using Entidad.Vo;
 
 namespace Negocio.Gestion
 {
@@ -10,9 +12,40 @@ namespace Negocio.Gestion
     {
         private readonly AdFaq _adFaq = new AdFaq();
 
-        public List<FaqDto> Obtener(FaqFiltro filtro)
+        public ResultDataTable Obtener(FaqFiltro filtro)
         {
-            return _adFaq.Obtener(filtro);
+            ResultDataTable result;
+            int totalRegistros = 0;
+            List<FaqDto> lista = new List<FaqDto>();
+            string mensajeError = "";
+
+            try
+            {
+                lista = _adFaq.Obtener(filtro);
+                if (lista.Any())
+                {
+                    totalRegistros = lista.First().TotalItems;
+                }
+            }
+            catch (Exception ex)
+            {
+                mensajeError = ex.Message;
+            }
+            finally
+            {
+                result = new ResultDataTable
+                {
+                    draw = filtro.Draw,
+                    recordsTotal = totalRegistros,
+                    recordsFiltered = totalRegistros,
+                    data = lista,
+                    error = mensajeError
+                };
+
+            }
+
+            return result;
+
         }
 
         public Faq ObtenerPorId(int idCliente)

@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using Entidad.Dto.Maestro;
-using Entidad.Dto.Seguridad;
 using Entidad.Entidades.Maestro;
 using Entidad.Vo;
 using Negocio.Maestro;
@@ -23,21 +19,7 @@ namespace Api.Controllers.Maestro
         [Route("Get")]
         public IHttpActionResult Get([FromBody]ClienteFiltro filtro)
         {
-            var data = _lnCliente.Obtener(filtro);
-            int totalRegistros = 0;
-
-            if (data.Any())
-            {
-                totalRegistros = data.First().TotalItems;
-            }
-
-            return Json(new
-            {
-                draw = filtro.Draw,
-                recordsTotal = totalRegistros,
-                recordsFiltered = totalRegistros,
-                data
-            });
+            return Json(_lnCliente.Obtener(filtro));
         }
 
         // GET: api/Cliente/5

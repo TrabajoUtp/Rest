@@ -10,7 +10,6 @@ namespace Entidad.Dto.Maestro
         public String RazonSocial { get; set; }
         public String Direccion { get; set; }
         public int IdEstado { get; set; }
-        public String Estado { get; set; }
         public Int32 TotalItems { get; set; }
 
     }

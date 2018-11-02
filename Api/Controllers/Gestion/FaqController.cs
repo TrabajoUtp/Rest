@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Http;
 using Entidad.Dto.Gestion;
 using Entidad.Entidades.Gestion;
@@ -18,21 +17,7 @@ namespace Api.Controllers.Gestion
         [Route("Get")]
         public IHttpActionResult Get([FromBody]FaqFiltro filtro)
         {
-            var data = _lnFaq.Obtener(filtro);
-            int totalRegistros = 0;
-
-            if (data.Any())
-            {
-                totalRegistros = data.First().TotalItems;
-            }
-
-            return Json(new
-            {
-                draw = filtro.Draw,
-                recordsTotal = totalRegistros,
-                recordsFiltered = totalRegistros,
-                data
-            });
+            return Json(_lnFaq.Obtener(filtro));
         }
 
         // GET: api/Faq/5

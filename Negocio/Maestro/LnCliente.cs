@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Datos.Maestro;
 using Entidad.Dto.Maestro;
 using Entidad.Entidades.Maestro;
@@ -11,9 +12,40 @@ namespace Negocio.Maestro
     {
         private readonly AdCliente _adCliente = new AdCliente();
 
-        public List<ClienteDto> Obtener(ClienteFiltro filtro)
+        public ResultDataTable Obtener(ClienteFiltro filtro)
         {
-            return _adCliente.Obtener(filtro);
+            ResultDataTable result;
+            int totalRegistros = 0;
+            List<ClienteDto> lista = new List<ClienteDto>();
+            string mensajeError = "";
+
+            try
+            {
+                lista = _adCliente.Obtener(filtro);
+                if (lista.Any())
+                {
+                    totalRegistros = lista.First().TotalItems;
+                }
+            }
+            catch (Exception ex)
+            {
+                mensajeError = ex.Message;
+            }
+            finally
+            {
+                result = new ResultDataTable
+                {
+                    draw = filtro.Draw,
+                    recordsTotal = totalRegistros,
+                    recordsFiltered = totalRegistros,
+                    data = lista,
+                    error = mensajeError
+                };
+
+            }
+
+            return result;
+
         }
 
         public List<Cliente> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)

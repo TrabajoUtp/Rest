@@ -20,21 +20,7 @@ namespace Api.Controllers.Maestro
         [Route("Get")]
         public IHttpActionResult Get([FromBody]CategoriaFaqFiltro filtro)
         {
-            var data = _lnCategoriaFaq.Obtener(filtro);
-            int totalRegistros = 0;
-
-            if (data.Any())
-            {
-                totalRegistros = data.First().TotalItems;
-            }
-
-            return Json(new
-            {
-                draw = filtro.Draw,
-                recordsTotal = totalRegistros,
-                recordsFiltered = totalRegistros,
-                data
-            });
+            return Json(_lnCategoriaFaq.Obtener(filtro));
         }
 
         // GET: api/CategoriaFaq/5

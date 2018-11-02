@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
 
 namespace Entidad.Dto.Seguridad
 {
@@ -9,5 +9,6 @@ namespace Entidad.Dto.Seguridad
         public string Observacion { get; set; }
         public int IdEstado { get; set; }
         public string Estado { get; set; }
+        public Int32 TotalItems { get; set; }
     }
 }

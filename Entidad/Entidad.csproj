@@ -48,7 +48,6 @@
     <Compile Include="Dto\Maestro\ClienteDto.cs" />
     <Compile Include="Dto\Maestro\ClienteFiltro.cs" />
     <Compile Include="Dto\Maestro\DepartamentoDto.cs" />
-    <Compile Include="Dto\Paginacion.cs" />
     <Compile Include="Dto\Seguridad\RolFiltro.cs" />
     <Compile Include="Entidades\Gestion\Faq.cs" />
     <Compile Include="Entidades\Maestro\CategoriaFaq.cs" />
@@ -68,7 +67,7 @@
     <Compile Include="Dto\Seguridad\RolUsuario.cs" />
     <Compile Include="Vo\DataTableNet.cs" />
     <Compile Include="Vo\DropDownItem.cs" />
-    <Compile Include="Vo\Result.cs" />
+    <Compile Include="Vo\ResultDataTable.cs" />
     <Compile Include="Vo\Resultados.cs" />
     <Compile Include="Vo\StoreProcedure.cs" />
   </ItemGroup>
