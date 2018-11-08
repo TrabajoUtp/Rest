@@ -12,7 +12,7 @@ namespace Datos.Gestion
 {
     public class AdFaq
     {
-        public List<FaqDto> Obtener(FaqFiltro filtro)
+        public List<FaqDto> Obtener(FaqFiltroDto filtro)
         {
 
             List<FaqDto> lista;
@@ -48,7 +48,25 @@ namespace Datos.Gestion
             return lista;
         }
 
-        public Faq ObtenerPorId(int idFaq)
+        public List<Faq> ObtenerCombo()
+        {
+            List<Faq> lista;
+            const string query = StoreProcedure.Maestro_usp_Faq_Combo;
+
+            using (var cn = HelperClass.ObtenerConeccion())
+            {
+                if (cn.State == ConnectionState.Closed)
+                {
+                    cn.Open();
+                }
+
+                lista = cn.Query<Faq>(query, commandType: CommandType.StoredProcedure).ToList();
+
+            }
+            return lista;
+        }
+
+        public Faq ObtenerPorId(int id)
         {
 
             Faq rol;
@@ -65,7 +83,7 @@ namespace Datos.Gestion
 
                     rol = cn.Query<Faq>(query, new
                         {
-                            IdFaq = idFaq
+                            IdFaq = id
                         },
                         commandType: CommandType.StoredProcedure).FirstOrDefault();
 
@@ -79,7 +97,7 @@ namespace Datos.Gestion
             return rol;
         }
 
-        public Int32 Registrar(Faq faq)
+        public Int32 Registrar(Faq entidad)
         {
             Int32 respuesta;
             try
@@ -94,10 +112,10 @@ namespace Datos.Gestion
 
                     respuesta = cn.Execute(query, new
                         {
-                            faq.Titulo,
-                            faq.Descripcion,
-                            faq.IdCategoriaFaq,
-                            IdUsuario = faq.IdUsuarioRegistra
+                            entidad.Titulo,
+                            entidad.Descripcion,
+                            entidad.IdCategoriaFaq,
+                            IdUsuario = entidad.IdUsuarioRegistra
                         },
                         commandType: CommandType.StoredProcedure);
 
@@ -111,7 +129,7 @@ namespace Datos.Gestion
             return respuesta;
         }
 
-        public Int32 Modificar(Faq faq)
+        public Int32 Modificar(Faq entidad)
         {
             Int32 respuesta;
             try
@@ -126,11 +144,11 @@ namespace Datos.Gestion
 
                     respuesta = cn.Execute(query, new
                         {
-                            faq.IdFaq,
-                            faq.Titulo,
-                            faq.Descripcion,
-                            faq.IdCategoriaFaq,
-                            IdUsuario = faq.IdUsuarioActualiza
+                            entidad.IdFaq,
+                            entidad.Titulo,
+                            entidad.Descripcion,
+                            entidad.IdCategoriaFaq,
+                            IdUsuario = entidad.IdUsuarioActualiza
                     },
                         commandType: CommandType.StoredProcedure);
 
@@ -144,7 +162,7 @@ namespace Datos.Gestion
             return respuesta;
         }
 
-        public Int32 Eliminar(Int32 idFaq)
+        public Int32 Eliminar(Int32 id)
         {
             Int32 respuesta;
             try
@@ -159,7 +177,7 @@ namespace Datos.Gestion
 
                     respuesta = cn.Execute(query, new
                         {
-                            IdFaq = idFaq
+                            IdFaq = id
                         },
                         commandType: CommandType.StoredProcedure);
 

@@ -12,7 +12,7 @@ namespace Datos.Maestro
 {
     public class AdCategoriaFaq
     {
-        public List<CategoriaFaqDto> Obtener(CategoriaFaqFiltro filtro)
+        public List<CategoriaFaqDto> Obtener(CategoriaFaqFiltroDto filtro)
         {
 
             List<CategoriaFaqDto> lista;
@@ -71,7 +71,7 @@ namespace Datos.Maestro
             return lista;
         }
 
-        public CategoriaFaq ObtenerPorId(int idCategoriaFaq)
+        public CategoriaFaq ObtenerPorId(int id)
         {
 
             CategoriaFaq entidad;
@@ -88,7 +88,7 @@ namespace Datos.Maestro
 
                     entidad = cn.Query<CategoriaFaq>(query, new
                         {
-                            IdCategoriaFaq = idCategoriaFaq
+                            IdCategoriaFaq = id
                         },
                         commandType: CommandType.StoredProcedure).FirstOrDefault();
 
@@ -102,7 +102,7 @@ namespace Datos.Maestro
             return entidad;
         }
 
-        public Int32 Registrar(CategoriaFaq categoriaFaq)
+        public Int32 Registrar(CategoriaFaq entidad)
         {
             Int32 respuesta;
             try
@@ -117,10 +117,10 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            categoriaFaq.Nombre,
-                            categoriaFaq.Observacion,
-                            categoriaFaq.IdUsuario,
-                            categoriaFaq.IdEstado
+                            entidad.Nombre,
+                            entidad.Observacion,
+                            entidad.IdUsuario,
+                            entidad.IdEstado
                         },
                         commandType: CommandType.StoredProcedure);
 
@@ -134,7 +134,7 @@ namespace Datos.Maestro
             return respuesta;
         }
 
-        public Int32 Modificar(CategoriaFaq categoriaFaq)
+        public Int32 Modificar(CategoriaFaq entidad)
         {
             Int32 respuesta;
             try
@@ -149,11 +149,11 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            categoriaFaq.IdCategoriaFaq,
-                            categoriaFaq.Nombre,
-                            categoriaFaq.Observacion,
-                            categoriaFaq.IdUsuario,
-                            categoriaFaq.IdEstado
+                            entidad.IdCategoriaFaq,
+                            entidad.Nombre,
+                            entidad.Observacion,
+                            entidad.IdUsuario,
+                            entidad.IdEstado
                     },
                         commandType: CommandType.StoredProcedure);
 
@@ -167,7 +167,7 @@ namespace Datos.Maestro
             return respuesta;
         }
 
-        public Int32 Eliminar(Int32 idCategoriaFaq)
+        public Int32 Eliminar(Int32 id)
         {
             Int32 respuesta;
             try
@@ -182,7 +182,7 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            IdCategoriaFaq = idCategoriaFaq
+                            IdCategoriaFaq = id
                         },
                         commandType: CommandType.StoredProcedure);
 

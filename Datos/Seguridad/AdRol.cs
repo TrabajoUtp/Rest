@@ -12,7 +12,7 @@ namespace Datos.Seguridad
 {
     public class AdRol
     {
-        public List<RolDto> Obtener(RolFiltro filtro)
+        public List<RolDto> Obtener(RolFiltroDto filtro)
         {
 
             List<RolDto> lista;
@@ -48,7 +48,28 @@ namespace Datos.Seguridad
             return lista;
         }
 
-        public RolDto ObtenerPorId(int idRol)
+        public List<Rol> ObtenerCombo(Int32 idEstado)
+        {
+            List<Rol> lista;
+            const string query = StoreProcedure.Seguridad_usp_Rol_Combo;
+
+            using (var cn = HelperClass.ObtenerConeccion())
+            {
+                if (cn.State == ConnectionState.Closed)
+                {
+                    cn.Open();
+                }
+
+                lista = cn.Query<Rol>(query, new
+                {
+                    IdEstado = idEstado
+                }, commandType: CommandType.StoredProcedure).ToList();
+
+            }
+            return lista;
+        }
+
+        public RolDto ObtenerPorId(int id)
         {
 
             RolDto rol;
@@ -65,7 +86,7 @@ namespace Datos.Seguridad
 
                     rol = cn.Query<RolDto>(query, new
                     {
-                        IdRol = idRol
+                        IdRol = id
                     },
                     commandType: CommandType.StoredProcedure).FirstOrDefault();
 
@@ -79,7 +100,7 @@ namespace Datos.Seguridad
             return rol;
         }
 
-        public Int32 Registrar(Rol rol)
+        public Int32 Registrar(Rol entidad)
         {
             Int32 respuesta;
             try
@@ -94,10 +115,10 @@ namespace Datos.Seguridad
 
                     respuesta = cn.Execute(query, new
                     {
-                        rol.IdRol,
-                        rol.Nombre,
-                        rol.Observacion,
-                        rol.IdEstado
+                        entidad.IdRol,
+                        entidad.Nombre,
+                        entidad.Observacion,
+                        entidad.IdEstado
                     },
                     commandType: CommandType.StoredProcedure);
 
@@ -111,7 +132,7 @@ namespace Datos.Seguridad
             return respuesta;
         }
 
-        public Int32 Modificar(Rol rol)
+        public Int32 Modificar(Rol entidad)
         {
             Int32 respuesta;
             try
@@ -126,12 +147,41 @@ namespace Datos.Seguridad
 
                     respuesta = cn.Execute(query, new
                     {
-                        rol.IdRol,
-                        rol.Nombre,
-                        rol.Observacion,
-                        rol.IdEstado
+                        entidad.IdRol,
+                        entidad.Nombre,
+                        entidad.Observacion,
+                        entidad.IdEstado
                     },
                     commandType: CommandType.StoredProcedure);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return respuesta;
+        }
+
+        public Int32 Eliminar(Int32 id)
+        {
+            Int32 respuesta;
+            try
+            {
+                const string query = StoreProcedure.Seguridad_usp_Rol_Eliminar;
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    respuesta = cn.Execute(query, new
+                        {
+                            IdRol = id
+                        },
+                        commandType: CommandType.StoredProcedure);
 
                 }
 

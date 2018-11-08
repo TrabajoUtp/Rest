@@ -15,7 +15,7 @@ namespace Api.Controllers.Gestion
         [HttpPost]
         [AcceptVerbs("POST")]
         [Route("Get")]
-        public IHttpActionResult Get([FromBody]FaqFiltro filtro)
+        public IHttpActionResult Get([FromBody]FaqFiltroDto filtro)
         {
             return Json(_lnFaq.Obtener(filtro));
         }

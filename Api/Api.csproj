@@ -196,6 +196,8 @@
     <Compile Include="Controllers\Gestion\FaqController.cs" />
     <Compile Include="Controllers\Maestro\PaisController.cs" />
     <Compile Include="Controllers\Maestro\UbigeoController.cs" />
+    <Compile Include="Controllers\Seguridad\AccesoController.cs" />
+    <Compile Include="Controllers\Seguridad\AccesoRolController.cs" />
     <Compile Include="Controllers\Seguridad\RolController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -12,7 +12,7 @@ namespace Negocio.Gestion
     {
         private readonly AdFaq _adFaq = new AdFaq();
 
-        public ResultDataTable Obtener(FaqFiltro filtro)
+        public ResultDataTable Obtener(FaqFiltroDto filtro)
         {
             ResultDataTable result;
             int totalRegistros = 0;
@@ -48,24 +48,42 @@ namespace Negocio.Gestion
 
         }
 
-        public Faq ObtenerPorId(int idCliente)
+        public List<Faq> ObtenerCombo(DropDownItem opcionCombo)
         {
-            return _adFaq.ObtenerPorId(idCliente);
+            var lista = _adFaq.ObtenerCombo();
+            switch (opcionCombo)
+            {
+                case DropDownItem.Ninguno:
+                    lista.Insert(0, new Faq { IdFaq = 0, Titulo = "Ninguno" });
+                    break;
+                case DropDownItem.Seleccione:
+                    lista.Insert(0, new Faq { IdFaq = 0, Titulo = "Seleccione" });
+                    break;
+                case DropDownItem.Todos:
+                    lista.Insert(0, new Faq { IdFaq = 0, Titulo = "Todos" });
+                    break;
+            }
+            return lista;
         }
 
-        public Int32 Registrar(Faq cliente)
+        public Faq ObtenerPorId(int id)
         {
-            return _adFaq.Registrar(cliente);
+            return _adFaq.ObtenerPorId(id);
         }
 
-        public Int32 Modificar(Faq cliente)
+        public Int32 Registrar(Faq entidad)
         {
-            return _adFaq.Modificar(cliente);
+            return _adFaq.Registrar(entidad);
         }
 
-        public Int32 Eliminar(Int32 idCliente)
+        public Int32 Modificar(Faq entidad)
         {
-            return _adFaq.Eliminar(idCliente);
+            return _adFaq.Modificar(entidad);
+        }
+
+        public Int32 Eliminar(Int32 id)
+        {
+            return _adFaq.Eliminar(id);
         }
     }
 }

@@ -8,20 +8,20 @@ using Entidad.Vo;
 
 namespace Negocio.Maestro
 {
-    public class LnCliente
+    public class LnMotivo
     {
-        private readonly AdCliente _adCliente = new AdCliente();
+        private readonly AdMotivo _adMotivo = new AdMotivo();
 
-        public ResultDataTable Obtener(ClienteFiltroDto filtro)
+        public ResultDataTable Obtener(MotivoFiltroDto filtro)
         {
             ResultDataTable result;
             int totalRegistros = 0;
-            List<ClienteDto> lista = new List<ClienteDto>();
+            List<MotivoDto> lista = new List<MotivoDto>();
             string mensajeError = "";
 
             try
             {
-                lista = _adCliente.Obtener(filtro);
+                lista = _adMotivo.Obtener(filtro);
                 if (lista.Any())
                 {
                     totalRegistros = lista.First().TotalItems;
@@ -48,42 +48,42 @@ namespace Negocio.Maestro
 
         }
 
-        public List<Cliente> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
+        public List<Motivo> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
         {
-            var lista = _adCliente.ObtenerCombo(idEstado);
+            var lista = _adMotivo.ObtenerCombo(idEstado);
             switch (opcionCombo)
             {
                 case DropDownItem.Ninguno:
-                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Ninguno" });
+                    lista.Insert(0, new Motivo { IdMotivo = 0, Nombre = "Ninguno" });
                     break;
                 case DropDownItem.Seleccione:
-                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Seleccione" });
+                    lista.Insert(0, new Motivo { IdMotivo = 0, Nombre = "Seleccione" });
                     break;
                 case DropDownItem.Todos:
-                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Todos" });
+                    lista.Insert(0, new Motivo { IdMotivo = 0, Nombre = "Todos" });
                     break;
             }
             return lista;
         }
 
-        public Cliente ObtenerPorId(int id)
+        public Motivo ObtenerPorId(int id)
         {
-            return _adCliente.ObtenerPorId(id);
+            return _adMotivo.ObtenerPorId(id);
         }
 
-        public Int32 Registrar(Cliente entidad)
+        public Int32 Registrar(Motivo entidad)
         {
-            return _adCliente.Registrar(entidad);
+            return _adMotivo.Registrar(entidad);
         }
 
-        public Int32 Modificar(Cliente entidad)
+        public Int32 Modificar(Motivo entidad)
         {
-            return _adCliente.Modificar(entidad);
+            return _adMotivo.Modificar(entidad);
         }
 
         public Int32 Eliminar(Int32 id)
         {
-            return _adCliente.Eliminar(id);
+            return _adMotivo.Eliminar(id);
         }
     }
 }

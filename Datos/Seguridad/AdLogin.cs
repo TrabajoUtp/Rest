@@ -6,6 +6,7 @@ using System.Linq;
 using Dapper;
 using Datos.Helper;
 using Entidad.Dto.Seguridad;
+using Entidad.Vo;
 
 namespace Datos.Seguridad
 {
@@ -56,7 +57,7 @@ namespace Datos.Seguridad
 
             try
             {
-                const string query = "Seguridad.usp_Usuario_Login";
+                const string query = StoreProcedure.Seguridad_usp_Usuario_Login;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)

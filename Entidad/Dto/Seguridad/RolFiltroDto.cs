@@ -3,7 +3,7 @@ using Entidad.Vo;
 
 namespace Entidad.Dto.Seguridad
 {
-    public class RolFiltro: DataTableNet
+    public class RolFiltroDto: DataTableNet
     {
         public Int32 IdRol { get; set; }
         public String Nombre { get; set; }

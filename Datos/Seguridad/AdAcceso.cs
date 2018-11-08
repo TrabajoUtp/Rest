@@ -1,24 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
 using Datos.Helper;
-using Entidad.Entidades.Maestro;
+using Entidad.Dto.Seguridad;
+using Entidad.Entidades.Seguridad;
 using Entidad.Vo;
-using System;
-using Entidad.Dto.Maestro;
 
-namespace Datos.Maestro
+namespace Datos.Seguridad
 {
-    public class AdPais
+    public class AdAcceso
     {
-        public List<PaisDto> Obtener(PaisFiltroDto filtro)
+        public List<AccesoDto> Obtener(AccesoFiltroDto filtro)
         {
-            List<PaisDto> lista;
+
+            List<AccesoDto> lista;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Pais_Obtener;
+                const string query = StoreProcedure.Seguridad_usp_Acceso_Obtener;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -26,10 +27,8 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    lista = cn.Query<PaisDto>(query, new
+                    lista = cn.Query<AccesoDto>(query, new
                         {
-                            filtro.Nombre,
-                            filtro.IdTipoEstado,
                             NumeroPagina = filtro.NumberPage,
                             CantidadRegistros = filtro.Length,
                             ColumnaOrden = filtro.ColumnOrder,
@@ -47,10 +46,10 @@ namespace Datos.Maestro
             return lista;
         }
 
-        public List<Pais> ObtenerCombo()
+        public List<Acceso> ObtenerCombo(Int32 idEstado)
         {
-            List<Pais> lista;
-            const string query = StoreProcedure.Maestro_usp_Pais_Combo;
+            List<Acceso> lista;
+            const string query = StoreProcedure.Seguridad_usp_Acceso_Combo;
 
             using (var cn = HelperClass.ObtenerConeccion())
             {
@@ -59,20 +58,23 @@ namespace Datos.Maestro
                     cn.Open();
                 }
 
-                lista = cn.Query<Pais>(query, commandType: CommandType.StoredProcedure).ToList();
+                lista = cn.Query<Acceso>(query, new
+                {
+                    IdEstado = idEstado
+                }, commandType: CommandType.StoredProcedure).ToList();
 
             }
             return lista;
         }
 
-        public Pais ObtenerPorId(int id)
+        public Acceso ObtenerPorId(Int64 id)
         {
 
-            Pais entidad;
+            Acceso entidad;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Pais_ObtenerPorId;
+                const string query = StoreProcedure.Seguridad_usp_Acceso_ObtenerPorId;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -80,9 +82,9 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    entidad = cn.Query<Pais>(query, new
+                    entidad = cn.Query<Acceso>(query, new
                         {
-                            IdPais = id
+                            IdAcceso = id
                         },
                         commandType: CommandType.StoredProcedure).FirstOrDefault();
 
@@ -96,12 +98,12 @@ namespace Datos.Maestro
             return entidad;
         }
 
-        public Int32 Registrar(Pais entidad)
+        public Int32 Registrar(Acceso entidad)
         {
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Pais_Registrar;
+                const string query = StoreProcedure.Seguridad_usp_Acceso_Registrar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -109,11 +111,19 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
+                    
+
                     respuesta = cn.Execute(query, new
                         {
+                            entidad.IdAccesoPadre,
                             entidad.Nombre,
-                            entidad.Codigo
-                        },
+                            entidad.Descripcion,
+                            entidad.Url,
+                            entidad.Icono,
+                            entidad.Orden,
+                            entidad.Tipo,
+                            entidad.IdEstado
+                    },
                         commandType: CommandType.StoredProcedure);
 
                 }
@@ -126,12 +136,12 @@ namespace Datos.Maestro
             return respuesta;
         }
 
-        public Int32 Modificar(Pais entidad)
+        public Int32 Modificar(Acceso entidad)
         {
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Pais_Modificar;
+                const string query = StoreProcedure.Seguridad_usp_Acceso_Modificar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -141,10 +151,16 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            entidad.IdPais,
+                            entidad.IdAcceso,
+                            entidad.IdAccesoPadre,
                             entidad.Nombre,
-                            entidad.Codigo
-                        },
+                            entidad.Descripcion,
+                            entidad.Url,
+                            entidad.Icono,
+                            entidad.Orden,
+                            entidad.Tipo,
+                            entidad.IdEstado
+                    },
                         commandType: CommandType.StoredProcedure);
 
                 }
@@ -157,12 +173,12 @@ namespace Datos.Maestro
             return respuesta;
         }
 
-        public Int32 Eliminar(Int32 id)
+        public Int32 Eliminar(Int64 id)
         {
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Pais_Eliminar;
+                const string query = StoreProcedure.Seguridad_usp_Acceso_Eliminar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -172,7 +188,7 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            IdPais = id
+                            IdAcceso = id
                         },
                         commandType: CommandType.StoredProcedure);
 
@@ -185,6 +201,5 @@ namespace Datos.Maestro
             }
             return respuesta;
         }
-
     }
 }

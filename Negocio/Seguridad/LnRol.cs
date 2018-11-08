@@ -12,7 +12,7 @@ namespace Negocio.Seguridad
     {
         private readonly AdRol _adRol = new AdRol();
 
-        public ResultDataTable Obtener(RolFiltro filtro)
+        public ResultDataTable Obtener(RolFiltroDto filtro)
         {
             ResultDataTable result;
             int totalRegistros = 0;
@@ -48,19 +48,42 @@ namespace Negocio.Seguridad
 
         }
 
-        public RolDto ObtenerPorId(int idRol)
+        public List<Rol> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
         {
-            return _adRol.ObtenerPorId(idRol);
+            var lista = _adRol.ObtenerCombo(idEstado);
+            switch (opcionCombo)
+            {
+                case DropDownItem.Ninguno:
+                    lista.Insert(0, new Rol { IdRol = 0, Nombre = "Ninguno" });
+                    break;
+                case DropDownItem.Seleccione:
+                    lista.Insert(0, new Rol { IdRol = 0, Nombre = "Seleccione" });
+                    break;
+                case DropDownItem.Todos:
+                    lista.Insert(0, new Rol { IdRol = 0, Nombre = "Todos" });
+                    break;
+            }
+            return lista;
         }
 
-        public Int32 Registrar(Rol rol)
+        public RolDto ObtenerPorId(int id)
         {
-            return _adRol.Registrar(rol);
+            return _adRol.ObtenerPorId(id);
         }
 
-        public Int32 Modificar(Rol rol)
+        public Int32 Registrar(Rol entidad)
         {
-            return _adRol.Modificar(rol);
+            return _adRol.Registrar(entidad);
+        }
+
+        public Int32 Modificar(Rol entidad)
+        {
+            return _adRol.Modificar(entidad);
+        }
+
+        public Int32 Eliminar(Int32 id)
+        {
+            return _adRol.Eliminar(id);
         }
 
     }

@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Datos.Maestro;
-using Entidad.Dto.Maestro;
-using Entidad.Entidades.Maestro;
+using Datos.Seguridad;
+using Entidad.Dto.Seguridad;
+using Entidad.Entidades.Seguridad;
 using Entidad.Vo;
 
-namespace Negocio.Maestro
+namespace Negocio.Seguridad
 {
-    public class LnCliente
+    public class LnAcceso
     {
-        private readonly AdCliente _adCliente = new AdCliente();
+        private readonly AdAcceso _adAcceso = new AdAcceso();
 
-        public ResultDataTable Obtener(ClienteFiltroDto filtro)
+        public ResultDataTable Obtener(AccesoFiltroDto filtro)
         {
             ResultDataTable result;
             int totalRegistros = 0;
-            List<ClienteDto> lista = new List<ClienteDto>();
+            List<AccesoDto> lista = new List<AccesoDto>();
             string mensajeError = "";
 
             try
             {
-                lista = _adCliente.Obtener(filtro);
+                lista = _adAcceso.Obtener(filtro);
                 if (lista.Any())
                 {
                     totalRegistros = lista.First().TotalItems;
@@ -48,42 +48,42 @@ namespace Negocio.Maestro
 
         }
 
-        public List<Cliente> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
+        public List<Acceso> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
         {
-            var lista = _adCliente.ObtenerCombo(idEstado);
+            var lista = _adAcceso.ObtenerCombo(idEstado);
             switch (opcionCombo)
             {
                 case DropDownItem.Ninguno:
-                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Ninguno" });
+                    lista.Insert(0, new Acceso { IdAcceso = 0, Nombre = "Ninguno" });
                     break;
                 case DropDownItem.Seleccione:
-                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Seleccione" });
+                    lista.Insert(0, new Acceso { IdAcceso = 0, Nombre = "Seleccione" });
                     break;
                 case DropDownItem.Todos:
-                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Todos" });
+                    lista.Insert(0, new Acceso { IdAcceso = 0, Nombre = "Todos" });
                     break;
             }
             return lista;
         }
 
-        public Cliente ObtenerPorId(int id)
+        public Acceso ObtenerPorId(Int64 id)
         {
-            return _adCliente.ObtenerPorId(id);
+            return _adAcceso.ObtenerPorId(id);
         }
 
-        public Int32 Registrar(Cliente entidad)
+        public Int32 Registrar(Acceso entidad)
         {
-            return _adCliente.Registrar(entidad);
+            return _adAcceso.Registrar(entidad);
         }
 
-        public Int32 Modificar(Cliente entidad)
+        public Int32 Modificar(Acceso entidad)
         {
-            return _adCliente.Modificar(entidad);
+            return _adAcceso.Modificar(entidad);
         }
 
-        public Int32 Eliminar(Int32 id)
+        public Int32 Eliminar(Int64 id)
         {
-            return _adCliente.Eliminar(id);
+            return _adAcceso.Eliminar(id);
         }
     }
 }

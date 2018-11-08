@@ -3,7 +3,7 @@ using Entidad.Vo;
 
 namespace Entidad.Dto.Maestro
 {
-    public class ClienteFiltro : DataTableNet
+    public class ClienteFiltroDto : DataTableNet
     {
         public Int32 IdCliente { get; set; }
         public String NumeroDocumento { get; set; }

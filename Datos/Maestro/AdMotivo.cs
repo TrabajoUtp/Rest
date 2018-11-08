@@ -1,24 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using Entidad.Dto.Maestro;
+using Entidad.Entidades.Maestro;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
 using Datos.Helper;
-using Entidad.Entidades.Maestro;
 using Entidad.Vo;
-using System;
-using Entidad.Dto.Maestro;
 
 namespace Datos.Maestro
 {
-    public class AdPais
+    public class AdMotivo
     {
-        public List<PaisDto> Obtener(PaisFiltroDto filtro)
+        public List<MotivoDto> Obtener(MotivoFiltroDto filtro)
         {
-            List<PaisDto> lista;
+
+            List<MotivoDto> lista;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Pais_Obtener;
+                const string query = StoreProcedure.Maestro_usp_Motivo_Obtener;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -26,10 +27,11 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    lista = cn.Query<PaisDto>(query, new
+                    lista = cn.Query<MotivoDto>(query, new
                         {
+                            filtro.Abreviatura,
                             filtro.Nombre,
-                            filtro.IdTipoEstado,
+                            filtro.IdEstado,
                             NumeroPagina = filtro.NumberPage,
                             CantidadRegistros = filtro.Length,
                             ColumnaOrden = filtro.ColumnOrder,
@@ -47,10 +49,10 @@ namespace Datos.Maestro
             return lista;
         }
 
-        public List<Pais> ObtenerCombo()
+        public List<Motivo> ObtenerCombo(Int32 idEstado)
         {
-            List<Pais> lista;
-            const string query = StoreProcedure.Maestro_usp_Pais_Combo;
+            List<Motivo> lista;
+            const string query = StoreProcedure.Maestro_usp_Motivo_Combo;
 
             using (var cn = HelperClass.ObtenerConeccion())
             {
@@ -59,20 +61,23 @@ namespace Datos.Maestro
                     cn.Open();
                 }
 
-                lista = cn.Query<Pais>(query, commandType: CommandType.StoredProcedure).ToList();
+                lista = cn.Query<Motivo>(query, new
+                {
+                    IdEstado = idEstado
+                }, commandType: CommandType.StoredProcedure).ToList();
 
             }
             return lista;
         }
 
-        public Pais ObtenerPorId(int id)
+        public Motivo ObtenerPorId(int id)
         {
 
-            Pais entidad;
+            Motivo entidad;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Pais_ObtenerPorId;
+                const string query = StoreProcedure.Maestro_usp_Motivo_ObtenerPorId;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -80,9 +85,9 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    entidad = cn.Query<Pais>(query, new
+                    entidad = cn.Query<Motivo>(query, new
                         {
-                            IdPais = id
+                            IdMotivo = id
                         },
                         commandType: CommandType.StoredProcedure).FirstOrDefault();
 
@@ -96,12 +101,12 @@ namespace Datos.Maestro
             return entidad;
         }
 
-        public Int32 Registrar(Pais entidad)
+        public Int32 Registrar(Motivo entidad)
         {
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Pais_Registrar;
+                const string query = StoreProcedure.Maestro_usp_Motivo_Registrar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -111,8 +116,10 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
+                            entidad.Abreviatura,
                             entidad.Nombre,
-                            entidad.Codigo
+                            entidad.Observacion,
+                            entidad.IdEstado
                         },
                         commandType: CommandType.StoredProcedure);
 
@@ -126,12 +133,12 @@ namespace Datos.Maestro
             return respuesta;
         }
 
-        public Int32 Modificar(Pais entidad)
+        public Int32 Modificar(Motivo entidad)
         {
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Pais_Modificar;
+                const string query = StoreProcedure.Maestro_usp_Motivo_Modificar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -141,10 +148,12 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            entidad.IdPais,
+                            entidad.IdMotivo,
+                            entidad.Abreviatura,
                             entidad.Nombre,
-                            entidad.Codigo
-                        },
+                            entidad.Observacion,
+                            entidad.IdEstado
+                    },
                         commandType: CommandType.StoredProcedure);
 
                 }
@@ -162,7 +171,7 @@ namespace Datos.Maestro
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Pais_Eliminar;
+                const string query = StoreProcedure.Maestro_usp_Motivo_Eliminar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -172,7 +181,7 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            IdPais = id
+                            IdMotivo = id
                         },
                         commandType: CommandType.StoredProcedure);
 
@@ -185,6 +194,5 @@ namespace Datos.Maestro
             }
             return respuesta;
         }
-
     }
 }

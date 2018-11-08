@@ -45,9 +45,12 @@
     <Compile Include="Maestro\LnCliente.cs" />
     <Compile Include="Maestro\LnContacto.cs" />
     <Compile Include="Maestro\LnEstado.cs" />
+    <Compile Include="Maestro\LnMotivo.cs" />
     <Compile Include="Maestro\LnPais.cs" />
     <Compile Include="Maestro\LnUbigeo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguridad\LnAcceso.cs" />
+    <Compile Include="Seguridad\LnAccesoRol.cs" />
     <Compile Include="Seguridad\LnLogin.cs" />
     <Compile Include="Seguridad\LnRol.cs" />
   </ItemGroup>

@@ -45,6 +45,7 @@ namespace Api
             identity.AddClaim(new Claim(ClaimTypes.Name, usuario.Nombre));
             identity.AddClaim(new Claim("username",usuario.UserName));
             identity.AddClaim(new Claim("apellido", usuario.ApellidoPaterno));
+            //identity.AddClaim(new Claim("idusuario", usuario.IdUsuario.ToString()));
 
             foreach (RolUsuario rolUsu in usuario.ListaRolUsuario)
             {
@@ -54,7 +55,8 @@ namespace Api
             var props = new AuthenticationProperties(new Dictionary<string, string>
             {
                 {"isLogin", "true"},
-                {"user", usuario.UserName}
+                {"user", usuario.UserName},
+                {"idUsuario", usuario.IdUsuario.ToString() }
             });
 
             var ticket = new AuthenticationTicket(identity, props);

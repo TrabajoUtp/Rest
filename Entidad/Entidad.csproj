@@ -42,13 +42,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\Gestion\FaqDto.cs" />
-    <Compile Include="Dto\Gestion\FaqFiltro.cs" />
+    <Compile Include="Dto\Gestion\FaqFiltroDto.cs" />
     <Compile Include="Dto\Maestro\CategoriaFaqDto.cs" />
-    <Compile Include="Dto\Maestro\CategoriaFaqFiltro.cs" />
+    <Compile Include="Dto\Maestro\CategoriaFaqFiltroDto.cs" />
     <Compile Include="Dto\Maestro\ClienteDto.cs" />
-    <Compile Include="Dto\Maestro\ClienteFiltro.cs" />
+    <Compile Include="Dto\Maestro\ClienteFiltroDto.cs" />
     <Compile Include="Dto\Maestro\DepartamentoDto.cs" />
-    <Compile Include="Dto\Seguridad\RolFiltro.cs" />
+    <Compile Include="Dto\Maestro\EstadoDto.cs" />
+    <Compile Include="Dto\Maestro\EstadoFiltroDto.cs" />
+    <Compile Include="Dto\Maestro\MotivoDto.cs" />
+    <Compile Include="Dto\Maestro\MotivoFiltroDto.cs" />
+    <Compile Include="Dto\Maestro\PaisDto.cs" />
+    <Compile Include="Dto\Maestro\PaisFiltroDto.cs" />
+    <Compile Include="Dto\Seguridad\AccesoDto.cs" />
+    <Compile Include="Dto\Seguridad\AccesoFiltroDto.cs" />
+    <Compile Include="Dto\Seguridad\RolFiltroDto.cs" />
     <Compile Include="Entidades\Gestion\Faq.cs" />
     <Compile Include="Entidades\Maestro\CategoriaFaq.cs" />
     <Compile Include="Entidades\Maestro\Cliente.cs" />
@@ -56,9 +64,11 @@
     <Compile Include="Entidades\Maestro\Departamento.cs" />
     <Compile Include="Entidades\Maestro\Distrito.cs" />
     <Compile Include="Entidades\Maestro\Estado.cs" />
+    <Compile Include="Entidades\Maestro\Motivo.cs" />
     <Compile Include="Entidades\Maestro\Pais.cs" />
     <Compile Include="Entidades\Maestro\Provincia.cs" />
     <Compile Include="Dto\Maestro\UbigeoDto.cs" />
+    <Compile Include="Entidades\Seguridad\Acceso.cs" />
     <Compile Include="Entidades\Seguridad\Rol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dto\Seguridad\LoginClaim.cs" />

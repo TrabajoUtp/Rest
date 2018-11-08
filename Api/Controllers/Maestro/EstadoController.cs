@@ -29,7 +29,7 @@ namespace Api.Controllers.Maestro
         [Route("GetCombo")]
         public List<Estado> GetCombo(int idTipoEstado, DropDownItem opcionCombo)
         {
-            return _lnEstado.GetCombo(idTipoEstado, opcionCombo);
+            return _lnEstado.ObtenerCombo(idTipoEstado, opcionCombo);
         }
 
         // POST: api/Estado

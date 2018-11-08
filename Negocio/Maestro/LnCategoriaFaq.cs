@@ -12,7 +12,7 @@ namespace Negocio.Maestro
     {
         private readonly AdCategoriaFaq _adCategoriaFaq = new AdCategoriaFaq();
 
-        public ResultDataTable Obtener(CategoriaFaqFiltro filtro)
+        public ResultDataTable Obtener(CategoriaFaqFiltroDto filtro)
         {
             ResultDataTable result;
             int totalRegistros = 0;
@@ -66,24 +66,24 @@ namespace Negocio.Maestro
             return lista;
         }
 
-        public CategoriaFaq ObtenerPorId(int idCategoriaFaq)
+        public CategoriaFaq ObtenerPorId(int id)
         {
-            return _adCategoriaFaq.ObtenerPorId(idCategoriaFaq);
+            return _adCategoriaFaq.ObtenerPorId(id);
         }
 
-        public Int32 Registrar(CategoriaFaq categoriaFaq)
+        public Int32 Registrar(CategoriaFaq entidad)
         {
-            return _adCategoriaFaq.Registrar(categoriaFaq);
+            return _adCategoriaFaq.Registrar(entidad);
         }
 
-        public Int32 Modificar(CategoriaFaq categoriaFaq)
+        public Int32 Modificar(CategoriaFaq entidad)
         {
-            return _adCategoriaFaq.Modificar(categoriaFaq);
+            return _adCategoriaFaq.Modificar(entidad);
         }
 
-        public Int32 Eliminar(Int32 idCategoriaFaq)
+        public Int32 Eliminar(Int32 id)
         {
-            return _adCategoriaFaq.Eliminar(idCategoriaFaq);
+            return _adCategoriaFaq.Eliminar(id);
         }
     }
 }

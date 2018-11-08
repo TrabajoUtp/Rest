@@ -4,7 +4,7 @@ namespace Entidad.Dto.Maestro
 {
     public class ClienteDto
     {
-
+        public Int32 Item { get; set; }
         public String IdCliente { get; set; }
         public String NumeroDocumento { get; set; }
         public String RazonSocial { get; set; }

@@ -18,7 +18,7 @@ namespace Api.Controllers.Maestro
         [HttpPost]
         [AcceptVerbs("POST")]
         [Route("Get")]
-        public IHttpActionResult Get([FromBody]CategoriaFaqFiltro filtro)
+        public IHttpActionResult Get([FromBody]CategoriaFaqFiltroDto filtro)
         {
             return Json(_lnCategoriaFaq.Obtener(filtro));
         }

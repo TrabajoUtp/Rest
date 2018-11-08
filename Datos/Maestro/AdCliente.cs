@@ -12,7 +12,7 @@ namespace Datos.Maestro
 {
     public class AdCliente
     {
-        public List<ClienteDto> Obtener(ClienteFiltro filtro)
+        public List<ClienteDto> Obtener(ClienteFiltroDto filtro)
         {
 
             List<ClienteDto> lista;
@@ -70,7 +70,7 @@ namespace Datos.Maestro
             return lista;
         }
 
-        public Cliente ObtenerPorId(int idCliente)
+        public Cliente ObtenerPorId(int id)
         {
 
             Cliente entidad;
@@ -87,7 +87,7 @@ namespace Datos.Maestro
 
                     entidad = cn.Query<Cliente>(query, new
                     {
-                        IdCliente = idCliente
+                        IdCliente = id
                     },
                     commandType: CommandType.StoredProcedure).FirstOrDefault();
 
@@ -101,7 +101,7 @@ namespace Datos.Maestro
             return entidad;
         }
 
-        public Int32 Registrar(Cliente cliente)
+        public Int32 Registrar(Cliente entidad)
         {
             Int32 respuesta;
             try
@@ -116,13 +116,13 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                     {
-                        cliente.NumeroDocumento,
-                        cliente.RazonSocial,
-                        cliente.Direccion,
-                        cliente.IdPais,
-                        cliente.IdUbigeo,
-                        cliente.IdUsuario,
-                        cliente.IdEstado
+                        entidad.NumeroDocumento,
+                        entidad.RazonSocial,
+                        entidad.Direccion,
+                        entidad.IdPais,
+                        entidad.IdUbigeo,
+                        entidad.IdUsuario,
+                        entidad.IdEstado
                     },
                     commandType: CommandType.StoredProcedure);
 
@@ -136,7 +136,7 @@ namespace Datos.Maestro
             return respuesta;
         }
 
-        public Int32 Modificar(Cliente cliente)
+        public Int32 Modificar(Cliente entidad)
         {
             Int32 respuesta;
             try
@@ -151,14 +151,14 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                     {
-                        cliente.IdCliente,
-                        cliente.NumeroDocumento,
-                        cliente.RazonSocial,
-                        cliente.Direccion,
-                        cliente.IdPais,
-                        cliente.IdUbigeo,
-                        cliente.IdUsuario,
-                        cliente.IdEstado
+                        entidad.IdCliente,
+                        entidad.NumeroDocumento,
+                        entidad.RazonSocial,
+                        entidad.Direccion,
+                        entidad.IdPais,
+                        entidad.IdUbigeo,
+                        entidad.IdUsuario,
+                        entidad.IdEstado
                     },
                     commandType: CommandType.StoredProcedure);
 
@@ -172,7 +172,7 @@ namespace Datos.Maestro
             return respuesta;
         }
 
-        public Int32 Eliminar(Int32 idCliente)
+        public Int32 Eliminar(Int32 id)
         {
             Int32 respuesta;
             try
@@ -187,7 +187,7 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            IdCliente = idCliente
+                            IdCliente = id
                         },
                         commandType: CommandType.StoredProcedure);
 
