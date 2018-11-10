@@ -8,20 +8,20 @@ using Entidad.Vo;
 
 namespace Negocio.Maestro
 {
-    public class LnContacto
+    public class LnTipoIncidencia
     {
-        private readonly AdContacto _adContacto = new AdContacto();
+        private readonly AdTipoIncidencia _adTipoIncidencia = new AdTipoIncidencia();
 
-        public ResultDataTable Obtener(ContactoFiltroDto filtro)
+        public ResultDataTable Obtener(TipoIncidenciaFiltroDto filtro)
         {
             ResultDataTable result;
             int totalRegistros = 0;
-            List<ContactoDto> lista = new List<ContactoDto>();
+            List<TipoIncidenciaDto> lista = new List<TipoIncidenciaDto>();
             string mensajeError = "";
 
             try
             {
-                lista = _adContacto.Obtener(filtro);
+                lista = _adTipoIncidencia.Obtener(filtro);
                 if (lista.Any())
                 {
                     totalRegistros = lista.First().TotalItems;
@@ -48,42 +48,42 @@ namespace Negocio.Maestro
 
         }
 
-        public List<Contacto> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
+        public List<TipoIncidencia> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
         {
-            var lista = _adContacto.ObtenerCombo(idEstado);
+            var lista = _adTipoIncidencia.ObtenerCombo(idEstado);
             switch (opcionCombo)
             {
                 case DropDownItem.Ninguno:
-                    lista.Insert(0, new Contacto { IdContacto = 0, Nombre = "Ninguno" });
+                    lista.Insert(0, new TipoIncidencia { IdTipoIncidencia = 0, Nombre = "Ninguno" });
                     break;
                 case DropDownItem.Seleccione:
-                    lista.Insert(0, new Contacto { IdContacto = 0, Nombre = "Seleccione" });
+                    lista.Insert(0, new TipoIncidencia { IdTipoIncidencia = 0, Nombre = "Seleccione" });
                     break;
                 case DropDownItem.Todos:
-                    lista.Insert(0, new Contacto { IdContacto = 0, Nombre = "Todos" });
+                    lista.Insert(0, new TipoIncidencia { IdTipoIncidencia = 0, Nombre = "Todos" });
                     break;
             }
             return lista;
         }
 
-        public Contacto ObtenerPorId(int id)
+        public TipoIncidencia ObtenerPorId(int id)
         {
-            return _adContacto.ObtenerPorId(id);
+            return _adTipoIncidencia.ObtenerPorId(id);
         }
 
-        public Int32 Registrar(Contacto entidad)
+        public Int32 Registrar(TipoIncidencia entidad)
         {
-            return _adContacto.Registrar(entidad);
+            return _adTipoIncidencia.Registrar(entidad);
         }
 
-        public Int32 Modificar(Contacto entidad)
+        public Int32 Modificar(TipoIncidencia entidad)
         {
-            return _adContacto.Modificar(entidad);
+            return _adTipoIncidencia.Modificar(entidad);
         }
 
         public Int32 Eliminar(Int32 id)
         {
-            return _adContacto.Eliminar(id);
+            return _adTipoIncidencia.Eliminar(id);
         }
     }
 }

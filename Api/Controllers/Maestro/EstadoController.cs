@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using Entidad.Dto.Maestro;
 using Entidad.Entidades.Maestro;
 using Entidad.Vo;
 using Negocio.Maestro;
@@ -15,15 +13,18 @@ namespace Api.Controllers.Maestro
     {
         private readonly LnEstado _lnEstado = new LnEstado();
         // GET: api/Estado
-        public IEnumerable<string> Get()
+        [HttpPost]
+        [AcceptVerbs("POST")]
+        [Route("Get")]
+        public IHttpActionResult Get([FromBody]EstadoFiltroDto filtro)
         {
-            return new string[] { "value1", "value2" };
+            return Json(_lnEstado.Obtener(filtro));
         }
 
         // GET: api/Estado/5
-        public string Get(int id)
+        public Estado Get(int idEstado)
         {
-            return "value";
+            return _lnEstado.ObtenerPorId(idEstado);
         }
 
         [Route("GetCombo")]
@@ -33,18 +34,27 @@ namespace Api.Controllers.Maestro
         }
 
         // POST: api/Estado
-        public void Post([FromBody]string value)
+        public Int32 Post([FromBody]Estado cliente)
         {
+            return _lnEstado.Registrar(cliente);
         }
 
         // PUT: api/Estado/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPost]
+        [AcceptVerbs("POST")]
+        [Route("Put")]
+        public Int32 Put([FromBody]Estado cliente)
         {
+            return _lnEstado.Modificar(cliente);
         }
 
         // DELETE: api/Estado/5
-        public void Delete(int id)
+        [HttpPost]
+        [AcceptVerbs("POST")]
+        [Route("Delete")]
+        public Int32 Delete([FromBody]Estado cliente)
         {
+            return _lnEstado.Eliminar(cliente.IdEstado);
         }
     }
 }

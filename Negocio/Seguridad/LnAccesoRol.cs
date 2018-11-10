@@ -7,7 +7,7 @@ namespace Negocio.Seguridad
     public class LnAccesoRol
     {
         private readonly AdAccesoRol _adAccesoRol = new AdAccesoRol();
-        public List<AccesoDto> ObtenerPorIdUsuario(int idUsuario)
+        public List<AccesoRolPadreDto> ObtenerPorIdUsuario(int idUsuario)
         {
             return _adAccesoRol.ObtenerPorIdUsuario(idUsuario);
         }

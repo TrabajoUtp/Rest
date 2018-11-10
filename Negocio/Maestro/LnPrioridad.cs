@@ -8,20 +8,20 @@ using Entidad.Vo;
 
 namespace Negocio.Maestro
 {
-    public class LnContacto
+    public class LnPrioridad
     {
-        private readonly AdContacto _adContacto = new AdContacto();
+        private readonly AdPrioridad _adPrioridad = new AdPrioridad();
 
-        public ResultDataTable Obtener(ContactoFiltroDto filtro)
+        public ResultDataTable Obtener(PrioridadFiltroDto filtro)
         {
             ResultDataTable result;
             int totalRegistros = 0;
-            List<ContactoDto> lista = new List<ContactoDto>();
+            List<PrioridadDto> lista = new List<PrioridadDto>();
             string mensajeError = "";
 
             try
             {
-                lista = _adContacto.Obtener(filtro);
+                lista = _adPrioridad.Obtener(filtro);
                 if (lista.Any())
                 {
                     totalRegistros = lista.First().TotalItems;
@@ -48,42 +48,42 @@ namespace Negocio.Maestro
 
         }
 
-        public List<Contacto> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
+        public List<Prioridad> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
         {
-            var lista = _adContacto.ObtenerCombo(idEstado);
+            var lista = _adPrioridad.ObtenerCombo(idEstado);
             switch (opcionCombo)
             {
                 case DropDownItem.Ninguno:
-                    lista.Insert(0, new Contacto { IdContacto = 0, Nombre = "Ninguno" });
+                    lista.Insert(0, new Prioridad { IdPrioridad = 0, Nombre = "Ninguno" });
                     break;
                 case DropDownItem.Seleccione:
-                    lista.Insert(0, new Contacto { IdContacto = 0, Nombre = "Seleccione" });
+                    lista.Insert(0, new Prioridad { IdPrioridad = 0, Nombre = "Seleccione" });
                     break;
                 case DropDownItem.Todos:
-                    lista.Insert(0, new Contacto { IdContacto = 0, Nombre = "Todos" });
+                    lista.Insert(0, new Prioridad { IdPrioridad = 0, Nombre = "Todos" });
                     break;
             }
             return lista;
         }
 
-        public Contacto ObtenerPorId(int id)
+        public Prioridad ObtenerPorId(int id)
         {
-            return _adContacto.ObtenerPorId(id);
+            return _adPrioridad.ObtenerPorId(id);
         }
 
-        public Int32 Registrar(Contacto entidad)
+        public Int32 Registrar(Prioridad entidad)
         {
-            return _adContacto.Registrar(entidad);
+            return _adPrioridad.Registrar(entidad);
         }
 
-        public Int32 Modificar(Contacto entidad)
+        public Int32 Modificar(Prioridad entidad)
         {
-            return _adContacto.Modificar(entidad);
+            return _adPrioridad.Modificar(entidad);
         }
 
         public Int32 Eliminar(Int32 id)
         {
-            return _adContacto.Eliminar(id);
+            return _adPrioridad.Eliminar(id);
         }
     }
 }

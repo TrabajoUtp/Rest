@@ -10,6 +10,16 @@ namespace Entidad.Dto.Seguridad
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
 
-        public List<RolUsuario> ListaRolUsuario { get; set; } 
+        public List<RolUsuario> ListaRolUsuario { get; set; }
+
+        public LoginUsuario()
+        {
+            ListaRolUsuario = new List<RolUsuario>();
+            UserName = string.Empty;
+            Nombre = string.Empty;
+            ApellidoPaterno = string.Empty;
+            ApellidoMaterno = string.Empty;
+        }
+
     }
 }

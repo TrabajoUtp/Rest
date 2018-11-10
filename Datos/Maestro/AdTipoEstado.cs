@@ -1,25 +1,25 @@
-﻿using Entidad.Dto.Maestro;
-using Entidad.Entidades.Maestro;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
 using Datos.Helper;
+using Entidad.Dto.Maestro;
+using Entidad.Entidades.Maestro;
 using Entidad.Vo;
 
 namespace Datos.Maestro
 {
-    public class AdMotivo
+    public class AdTipoEstado
     {
-        public List<MotivoDto> Obtener(MotivoFiltroDto filtro)
+        public List<TipoEstadoDto> Obtener(TipoEstadoFiltroDto filtro)
         {
 
-            List<MotivoDto> lista;
+            List<TipoEstadoDto> lista;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Obtener;
+                const string query = StoreProcedure.Maestro_usp_TipoEstado_Obtener;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -27,10 +27,10 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    lista = cn.Query<MotivoDto>(query, new
+                    lista = cn.Query<TipoEstadoDto>(query, new
                         {
                             filtro.Nombre,
-                            filtro.IdEstado,
+                            filtro.Observacion,
                             NumeroPagina = filtro.NumberPage,
                             CantidadRegistros = filtro.Length,
                             ColumnaOrden = filtro.ColumnOrder,
@@ -48,10 +48,10 @@ namespace Datos.Maestro
             return lista;
         }
 
-        public List<Motivo> ObtenerCombo(Int32 idEstado)
+        public List<TipoEstado> ObtenerCombo()
         {
-            List<Motivo> lista;
-            const string query = StoreProcedure.Maestro_usp_Motivo_Combo;
+            List<TipoEstado> lista;
+            const string query = StoreProcedure.Maestro_usp_TipoEstado_Combo;
 
             using (var cn = HelperClass.ObtenerConeccion())
             {
@@ -60,23 +60,20 @@ namespace Datos.Maestro
                     cn.Open();
                 }
 
-                lista = cn.Query<Motivo>(query, new
-                {
-                    IdEstado = idEstado
-                }, commandType: CommandType.StoredProcedure).ToList();
+                lista = cn.Query<TipoEstado>(query, commandType: CommandType.StoredProcedure).ToList();
 
             }
             return lista;
         }
 
-        public Motivo ObtenerPorId(int id)
+        public TipoEstado ObtenerPorId(int id)
         {
 
-            Motivo entidad;
+            TipoEstado entidad;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_ObtenerPorId;
+                const string query = StoreProcedure.Maestro_usp_TipoEstado_ObtenerPorId;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -84,9 +81,9 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    entidad = cn.Query<Motivo>(query, new
+                    entidad = cn.Query<TipoEstado>(query, new
                         {
-                            IdMotivo = id
+                            IdTipoEstado = id
                         },
                         commandType: CommandType.StoredProcedure).FirstOrDefault();
 
@@ -100,12 +97,12 @@ namespace Datos.Maestro
             return entidad;
         }
 
-        public Int32 Registrar(Motivo entidad)
+        public Int32 Registrar(TipoEstado entidad)
         {
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Registrar;
+                const string query = StoreProcedure.Maestro_usp_TipoEstado_Registrar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -115,10 +112,8 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            entidad.Abreviatura,
                             entidad.Nombre,
-                            entidad.Observacion,
-                            entidad.IdEstado
+                            entidad.Observacion
                         },
                         commandType: CommandType.StoredProcedure);
 
@@ -132,12 +127,12 @@ namespace Datos.Maestro
             return respuesta;
         }
 
-        public Int32 Modificar(Motivo entidad)
+        public Int32 Modificar(TipoEstado entidad)
         {
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Modificar;
+                const string query = StoreProcedure.Maestro_usp_TipoEstado_Modificar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -147,12 +142,10 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            entidad.IdMotivo,
-                            entidad.Abreviatura,
+                            entidad.IdTipoEstado,
                             entidad.Nombre,
-                            entidad.Observacion,
-                            entidad.IdEstado
-                    },
+                            entidad.Observacion
+                        },
                         commandType: CommandType.StoredProcedure);
 
                 }
@@ -170,7 +163,7 @@ namespace Datos.Maestro
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Eliminar;
+                const string query = StoreProcedure.Maestro_usp_TipoEstado_Eliminar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -180,7 +173,7 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            IdMotivo = id
+                            IdTipoEstado = id
                         },
                         commandType: CommandType.StoredProcedure);
 

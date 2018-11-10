@@ -190,11 +190,17 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Auth\AuthorizeAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Maestro\AreaController.cs" />
     <Compile Include="Controllers\Maestro\CategoriaFaqController.cs" />
     <Compile Include="Controllers\Maestro\ClienteController.cs" />
+    <Compile Include="Controllers\Maestro\ContactoController.cs" />
     <Compile Include="Controllers\Maestro\EstadoController.cs" />
     <Compile Include="Controllers\Gestion\FaqController.cs" />
+    <Compile Include="Controllers\Maestro\MotivoController.cs" />
     <Compile Include="Controllers\Maestro\PaisController.cs" />
+    <Compile Include="Controllers\Maestro\PrioridadController.cs" />
+    <Compile Include="Controllers\Maestro\TipoEstadoController.cs" />
+    <Compile Include="Controllers\Maestro\TipoIncidenciaController.cs" />
     <Compile Include="Controllers\Maestro\UbigeoController.cs" />
     <Compile Include="Controllers\Seguridad\AccesoController.cs" />
     <Compile Include="Controllers\Seguridad\AccesoRolController.cs" />

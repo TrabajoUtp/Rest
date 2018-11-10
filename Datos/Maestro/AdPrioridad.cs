@@ -1,25 +1,25 @@
-﻿using Entidad.Dto.Maestro;
-using Entidad.Entidades.Maestro;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
 using Datos.Helper;
+using Entidad.Dto.Maestro;
+using Entidad.Entidades.Maestro;
 using Entidad.Vo;
 
 namespace Datos.Maestro
 {
-    public class AdMotivo
+    public class AdPrioridad
     {
-        public List<MotivoDto> Obtener(MotivoFiltroDto filtro)
+        public List<PrioridadDto> Obtener(PrioridadFiltroDto filtro)
         {
 
-            List<MotivoDto> lista;
+            List<PrioridadDto> lista;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Obtener;
+                const string query = StoreProcedure.Maestro_usp_Prioridad_Obtener;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -27,7 +27,7 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    lista = cn.Query<MotivoDto>(query, new
+                    lista = cn.Query<PrioridadDto>(query, new
                         {
                             filtro.Nombre,
                             filtro.IdEstado,
@@ -48,10 +48,10 @@ namespace Datos.Maestro
             return lista;
         }
 
-        public List<Motivo> ObtenerCombo(Int32 idEstado)
+        public List<Prioridad> ObtenerCombo(Int32 idEstado)
         {
-            List<Motivo> lista;
-            const string query = StoreProcedure.Maestro_usp_Motivo_Combo;
+            List<Prioridad> lista;
+            const string query = StoreProcedure.Maestro_usp_Prioridad_Combo;
 
             using (var cn = HelperClass.ObtenerConeccion())
             {
@@ -60,7 +60,7 @@ namespace Datos.Maestro
                     cn.Open();
                 }
 
-                lista = cn.Query<Motivo>(query, new
+                lista = cn.Query<Prioridad>(query, new
                 {
                     IdEstado = idEstado
                 }, commandType: CommandType.StoredProcedure).ToList();
@@ -69,14 +69,14 @@ namespace Datos.Maestro
             return lista;
         }
 
-        public Motivo ObtenerPorId(int id)
+        public Prioridad ObtenerPorId(int id)
         {
 
-            Motivo entidad;
+            Prioridad entidad;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_ObtenerPorId;
+                const string query = StoreProcedure.Maestro_usp_Prioridad_ObtenerPorId;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -84,9 +84,9 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    entidad = cn.Query<Motivo>(query, new
+                    entidad = cn.Query<Prioridad>(query, new
                         {
-                            IdMotivo = id
+                            IdPrioridad = id
                         },
                         commandType: CommandType.StoredProcedure).FirstOrDefault();
 
@@ -100,12 +100,12 @@ namespace Datos.Maestro
             return entidad;
         }
 
-        public Int32 Registrar(Motivo entidad)
+        public Int32 Registrar(Prioridad entidad)
         {
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Registrar;
+                const string query = StoreProcedure.Maestro_usp_Prioridad_Registrar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -115,7 +115,6 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            entidad.Abreviatura,
                             entidad.Nombre,
                             entidad.Observacion,
                             entidad.IdEstado
@@ -132,12 +131,12 @@ namespace Datos.Maestro
             return respuesta;
         }
 
-        public Int32 Modificar(Motivo entidad)
+        public Int32 Modificar(Prioridad entidad)
         {
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Modificar;
+                const string query = StoreProcedure.Maestro_usp_Prioridad_Modificar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -147,8 +146,7 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            entidad.IdMotivo,
-                            entidad.Abreviatura,
+                            entidad.IdPrioridad,
                             entidad.Nombre,
                             entidad.Observacion,
                             entidad.IdEstado
@@ -170,7 +168,7 @@ namespace Datos.Maestro
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Eliminar;
+                const string query = StoreProcedure.Maestro_usp_Prioridad_Eliminar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -180,7 +178,7 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            IdMotivo = id
+                            IdPrioridad = id
                         },
                         commandType: CommandType.StoredProcedure);
 

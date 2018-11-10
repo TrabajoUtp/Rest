@@ -8,20 +8,20 @@ using Entidad.Vo;
 
 namespace Negocio.Maestro
 {
-    public class LnContacto
+    public class LnTipoEstado
     {
-        private readonly AdContacto _adContacto = new AdContacto();
+        private readonly AdTipoEstado _adTipoEstado = new AdTipoEstado();
 
-        public ResultDataTable Obtener(ContactoFiltroDto filtro)
+        public ResultDataTable Obtener(TipoEstadoFiltroDto filtro)
         {
             ResultDataTable result;
             int totalRegistros = 0;
-            List<ContactoDto> lista = new List<ContactoDto>();
+            List<TipoEstadoDto> lista = new List<TipoEstadoDto>();
             string mensajeError = "";
 
             try
             {
-                lista = _adContacto.Obtener(filtro);
+                lista = _adTipoEstado.Obtener(filtro);
                 if (lista.Any())
                 {
                     totalRegistros = lista.First().TotalItems;
@@ -48,42 +48,42 @@ namespace Negocio.Maestro
 
         }
 
-        public List<Contacto> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
+        public List<TipoEstado> ObtenerCombo(DropDownItem opcionCombo)
         {
-            var lista = _adContacto.ObtenerCombo(idEstado);
+            var lista = _adTipoEstado.ObtenerCombo();
             switch (opcionCombo)
             {
                 case DropDownItem.Ninguno:
-                    lista.Insert(0, new Contacto { IdContacto = 0, Nombre = "Ninguno" });
+                    lista.Insert(0, new TipoEstado { IdTipoEstado = 0, Nombre = "Ninguno" });
                     break;
                 case DropDownItem.Seleccione:
-                    lista.Insert(0, new Contacto { IdContacto = 0, Nombre = "Seleccione" });
+                    lista.Insert(0, new TipoEstado { IdTipoEstado = 0, Nombre = "Seleccione" });
                     break;
                 case DropDownItem.Todos:
-                    lista.Insert(0, new Contacto { IdContacto = 0, Nombre = "Todos" });
+                    lista.Insert(0, new TipoEstado { IdTipoEstado = 0, Nombre = "Todos" });
                     break;
             }
             return lista;
         }
 
-        public Contacto ObtenerPorId(int id)
+        public TipoEstado ObtenerPorId(int id)
         {
-            return _adContacto.ObtenerPorId(id);
+            return _adTipoEstado.ObtenerPorId(id);
         }
 
-        public Int32 Registrar(Contacto entidad)
+        public Int32 Registrar(TipoEstado entidad)
         {
-            return _adContacto.Registrar(entidad);
+            return _adTipoEstado.Registrar(entidad);
         }
 
-        public Int32 Modificar(Contacto entidad)
+        public Int32 Modificar(TipoEstado entidad)
         {
-            return _adContacto.Modificar(entidad);
+            return _adTipoEstado.Modificar(entidad);
         }
 
         public Int32 Eliminar(Int32 id)
         {
-            return _adContacto.Eliminar(id);
+            return _adTipoEstado.Eliminar(id);
         }
     }
 }

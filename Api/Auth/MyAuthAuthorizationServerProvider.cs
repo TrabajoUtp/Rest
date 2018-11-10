@@ -43,7 +43,7 @@ namespace Api
 
             //identity.AddClaim(new Claim(@"claim", claim));
             identity.AddClaim(new Claim(ClaimTypes.Name, usuario.Nombre));
-            identity.AddClaim(new Claim("username",usuario.UserName));
+            identity.AddClaim(new Claim("username", usuario.UserName));
             identity.AddClaim(new Claim("apellido", usuario.ApellidoPaterno));
             //identity.AddClaim(new Claim("idusuario", usuario.IdUsuario.ToString()));
 
@@ -52,11 +52,17 @@ namespace Api
                 identity.AddClaim(new Claim(ClaimTypes.Role, rolUsu.NombreRol));
             }
 
+            string isLogin = "false";
+            if (!String.IsNullOrEmpty(usuario.UserName))
+            {
+                isLogin = "true";
+            }
+
             var props = new AuthenticationProperties(new Dictionary<string, string>
             {
-                {"isLogin", "true"},
+                {"isLogin", isLogin},
                 {"user", usuario.UserName},
-                {"idUsuario", usuario.IdUsuario.ToString() }
+                {"idUsuario", usuario.IdUsuario.ToString()}
             });
 
             var ticket = new AuthenticationTicket(identity, props);

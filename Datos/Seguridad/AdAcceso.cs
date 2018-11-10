@@ -115,7 +115,7 @@ namespace Datos.Seguridad
 
                     respuesta = cn.Execute(query, new
                         {
-                            entidad.IdAccesoPadre,
+                            entidad.IdAcceso,
                             entidad.Nombre,
                             entidad.Descripcion,
                             entidad.Url,

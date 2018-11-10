@@ -34,6 +34,14 @@ namespace Entidad.Vo
         public const String Maestro_usp_Cliente_Modificar = "Maestro.usp_Cliente_Modificar";
         public const String Maestro_usp_Cliente_Eliminar = "Maestro.usp_Cliente_Eliminar";
 
+        //Maestro.TipoIncidencia
+        public const String Maestro_usp_TipoIncidencia_Obtener = "Maestro.usp_TipoIncidencia_Obtener";
+        public const String Maestro_usp_TipoIncidencia_Combo = "Maestro.usp_TipoIncidencia_Combo";
+        public const String Maestro_usp_TipoIncidencia_ObtenerPorId = "Maestro.usp_TipoIncidencia_ObtenerPorId";
+        public const String Maestro_usp_TipoIncidencia_Registrar = "Maestro.usp_TipoIncidencia_Registrar";
+        public const String Maestro_usp_TipoIncidencia_Modificar = "Maestro.usp_TipoIncidencia_Modificar";
+        public const String Maestro_usp_TipoIncidencia_Eliminar = "Maestro.usp_TipoIncidencia_Eliminar";
+
         //Maestro.Motivo
         public const String Maestro_usp_Motivo_Obtener = "Maestro.usp_Motivo_Obtener";
         public const String Maestro_usp_Motivo_Combo = "Maestro.usp_Motivo_Combo";
@@ -41,6 +49,22 @@ namespace Entidad.Vo
         public const String Maestro_usp_Motivo_Registrar = "Maestro.usp_Motivo_Registrar";
         public const String Maestro_usp_Motivo_Modificar = "Maestro.usp_Motivo_Modificar";
         public const String Maestro_usp_Motivo_Eliminar = "Maestro.usp_Motivo_Eliminar";
+
+        //Maestro.Area
+        public const String Maestro_usp_Area_Obtener = "Maestro.usp_Area_Obtener";
+        public const String Maestro_usp_Area_Combo = "Maestro.usp_Area_Combo";
+        public const String Maestro_usp_Area_ObtenerPorId = "Maestro.usp_Area_ObtenerPorId";
+        public const String Maestro_usp_Area_Registrar = "Maestro.usp_Area_Registrar";
+        public const String Maestro_usp_Area_Modificar = "Maestro.usp_Area_Modificar";
+        public const String Maestro_usp_Area_Eliminar = "Maestro.usp_Area_Eliminar";
+
+        //Maestro.Prioridad
+        public const String Maestro_usp_Prioridad_Obtener = "Maestro.usp_Prioridad_Obtener";
+        public const String Maestro_usp_Prioridad_Combo = "Maestro.usp_Prioridad_Combo";
+        public const String Maestro_usp_Prioridad_ObtenerPorId = "Maestro.usp_Prioridad_ObtenerPorId";
+        public const String Maestro_usp_Prioridad_Registrar = "Maestro.usp_Prioridad_Registrar";
+        public const String Maestro_usp_Prioridad_Modificar = "Maestro.usp_Prioridad_Modificar";
+        public const String Maestro_usp_Prioridad_Eliminar = "Maestro.usp_Prioridad_Eliminar";
 
         //Maestro.CategoriaFaq
         public const String Maestro_usp_CategoriaFaq_Obtener = "Maestro.usp_CategoriaFaq_Obtener";
@@ -50,6 +74,14 @@ namespace Entidad.Vo
         public const String Maestro_usp_CategoriaFaq_Modificar = "Maestro.usp_CategoriaFaq_Modificar";
         public const String Maestro_usp_CategoriaFaq_Eliminar = "Maestro.usp_CategoriaFaq_Eliminar";
 
+        //Maestro.TipoEstado
+        public const String Maestro_usp_TipoEstado_Obtener = "Maestro.usp_TipoEstado_Obtener";
+        public const String Maestro_usp_TipoEstado_Combo = "Maestro.usp_TipoEstado_Combo";
+        public const String Maestro_usp_TipoEstado_ObtenerPorId = "Maestro.usp_TipoEstado_ObtenerPorId";
+        public const String Maestro_usp_TipoEstado_Registrar = "Maestro.usp_TipoEstado_Registrar";
+        public const String Maestro_usp_TipoEstado_Modificar = "Maestro.usp_TipoEstado_Modificar";
+        public const String Maestro_usp_TipoEstado_Eliminar = "Maestro.usp_TipoEstado_Eliminar";
+
         //Maestro.Estado
         public const String Maestro_usp_Estado_Obtener = "Maestro.usp_Estado_Obtener";
         public const String Maestro_usp_Estado_Combo = "Maestro.usp_Estado_Combo";
@@ -57,6 +89,14 @@ namespace Entidad.Vo
         public const String Maestro_usp_Estado_Registrar = "Maestro.usp_Estado_Registrar";
         public const String Maestro_usp_Estado_Modificar = "Maestro.usp_Estado_Modificar";
         public const String Maestro_usp_Estado_Eliminar = "Maestro.usp_Estado_Eliminar";
+
+        //Maestro.Contacto
+        public const String Maestro_usp_Contacto_Obtener = "Maestro.usp_Contacto_Obtener";
+        public const String Maestro_usp_Contacto_Combo = "Maestro.usp_Contacto_Combo";
+        public const String Maestro_usp_Contacto_ObtenerPorId = "Maestro.usp_Contacto_ObtenerPorId";
+        public const String Maestro_usp_Contacto_Registrar = "Maestro.usp_Contacto_Registrar";
+        public const String Maestro_usp_Contacto_Modificar = "Maestro.usp_Contacto_Modificar";
+        public const String Maestro_usp_Contacto_Eliminar = "Maestro.usp_Contacto_Eliminar";
 
         //Maestro.Pais
         public const String Maestro_usp_Pais_Obtener = "Maestro.usp_Pais_Obtener";

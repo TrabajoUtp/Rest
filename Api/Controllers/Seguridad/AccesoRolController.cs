@@ -12,7 +12,7 @@ namespace Api.Controllers.Seguridad
 
         [HttpGet]
         [Route("ObtenerPorIdUsuario")]
-        public List<AccesoDto> ObtenerPorIdUsuario(int idUsuario)
+        public List<AccesoRolPadreDto> ObtenerPorIdUsuario(int idUsuario)
         {
             return _lnAccesoRol.ObtenerPorIdUsuario(idUsuario);
         }

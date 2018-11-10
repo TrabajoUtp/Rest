@@ -41,12 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Gestion\LnFaq.cs" />
+    <Compile Include="Maestro\LnArea.cs" />
     <Compile Include="Maestro\LnCategoriaFaq.cs" />
     <Compile Include="Maestro\LnCliente.cs" />
     <Compile Include="Maestro\LnContacto.cs" />
     <Compile Include="Maestro\LnEstado.cs" />
     <Compile Include="Maestro\LnMotivo.cs" />
     <Compile Include="Maestro\LnPais.cs" />
+    <Compile Include="Maestro\LnPrioridad.cs" />
+    <Compile Include="Maestro\LnTipoEstado.cs" />
+    <Compile Include="Maestro\LnTipoIncidencia.cs" />
     <Compile Include="Maestro\LnUbigeo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad\LnAcceso.cs" />

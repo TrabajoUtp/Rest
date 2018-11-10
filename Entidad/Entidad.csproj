@@ -43,10 +43,14 @@
   <ItemGroup>
     <Compile Include="Dto\Gestion\FaqDto.cs" />
     <Compile Include="Dto\Gestion\FaqFiltroDto.cs" />
+    <Compile Include="Dto\Maestro\AreaDto.cs" />
+    <Compile Include="Dto\Maestro\AreaFiltroDto.cs" />
     <Compile Include="Dto\Maestro\CategoriaFaqDto.cs" />
     <Compile Include="Dto\Maestro\CategoriaFaqFiltroDto.cs" />
     <Compile Include="Dto\Maestro\ClienteDto.cs" />
     <Compile Include="Dto\Maestro\ClienteFiltroDto.cs" />
+    <Compile Include="Dto\Maestro\ContactoDto.cs" />
+    <Compile Include="Dto\Maestro\ContactoFiltroDto.cs" />
     <Compile Include="Dto\Maestro\DepartamentoDto.cs" />
     <Compile Include="Dto\Maestro\EstadoDto.cs" />
     <Compile Include="Dto\Maestro\EstadoFiltroDto.cs" />
@@ -54,10 +58,19 @@
     <Compile Include="Dto\Maestro\MotivoFiltroDto.cs" />
     <Compile Include="Dto\Maestro\PaisDto.cs" />
     <Compile Include="Dto\Maestro\PaisFiltroDto.cs" />
+    <Compile Include="Dto\Maestro\PrioridadDto.cs" />
+    <Compile Include="Dto\Maestro\PrioridadFiltroDto.cs" />
+    <Compile Include="Dto\Maestro\TipoEstadoDto.cs" />
+    <Compile Include="Dto\Maestro\TipoEstadoFiltroDto.cs" />
+    <Compile Include="Dto\Maestro\TipoIncidenciaDto.cs" />
+    <Compile Include="Dto\Maestro\TipoIncidenciaFiltroDto.cs" />
     <Compile Include="Dto\Seguridad\AccesoDto.cs" />
+    <Compile Include="Dto\Seguridad\AccesoRolHijoDto.cs" />
+    <Compile Include="Dto\Seguridad\AccesoRolPadreDto.cs" />
     <Compile Include="Dto\Seguridad\AccesoFiltroDto.cs" />
     <Compile Include="Dto\Seguridad\RolFiltroDto.cs" />
     <Compile Include="Entidades\Gestion\Faq.cs" />
+    <Compile Include="Entidades\Maestro\Area.cs" />
     <Compile Include="Entidades\Maestro\CategoriaFaq.cs" />
     <Compile Include="Entidades\Maestro\Cliente.cs" />
     <Compile Include="Entidades\Maestro\Contacto.cs" />
@@ -66,8 +79,11 @@
     <Compile Include="Entidades\Maestro\Estado.cs" />
     <Compile Include="Entidades\Maestro\Motivo.cs" />
     <Compile Include="Entidades\Maestro\Pais.cs" />
+    <Compile Include="Entidades\Maestro\Prioridad.cs" />
     <Compile Include="Entidades\Maestro\Provincia.cs" />
     <Compile Include="Dto\Maestro\UbigeoDto.cs" />
+    <Compile Include="Entidades\Maestro\TipoEstado.cs" />
+    <Compile Include="Entidades\Maestro\TipoIncidencia.cs" />
     <Compile Include="Entidades\Seguridad\Acceso.cs" />
     <Compile Include="Entidades\Seguridad\Rol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

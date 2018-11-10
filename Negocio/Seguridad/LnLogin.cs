@@ -9,7 +9,12 @@ namespace Negocio.Seguridad
 
         public LoginUsuario Login(string usuario, string contrasenia)
         {
-            return _adLogin.Login(usuario, contrasenia);
+            var result = _adLogin.Login(usuario, contrasenia);
+            if (result == null)
+            {
+                result = new LoginUsuario();
+            }
+            return result;
         }
     }
 }
