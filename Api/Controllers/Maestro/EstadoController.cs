@@ -28,7 +28,7 @@ namespace Api.Controllers.Maestro
         }
 
         [Route("GetCombo")]
-        public List<Estado> GetCombo(int idTipoEstado, DropDownItem opcionCombo)
+        public List<Estado> GetCombo(DropDownItem opcionCombo, int idTipoEstado)
         {
             return _lnEstado.ObtenerCombo(idTipoEstado, opcionCombo);
         }

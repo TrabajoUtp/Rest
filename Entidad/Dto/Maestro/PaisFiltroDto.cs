@@ -10,6 +10,5 @@ namespace Entidad.Dto.Maestro
     public class PaisFiltroDto: DataTableNet
     {
         public String Nombre { get; set; }
-        public Int32 IdTipoEstado { get; set; }
     }
 }

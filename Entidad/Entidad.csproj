@@ -75,12 +75,10 @@
     <Compile Include="Entidades\Maestro\Cliente.cs" />
     <Compile Include="Entidades\Maestro\Contacto.cs" />
     <Compile Include="Entidades\Maestro\Departamento.cs" />
-    <Compile Include="Entidades\Maestro\Distrito.cs" />
     <Compile Include="Entidades\Maestro\Estado.cs" />
     <Compile Include="Entidades\Maestro\Motivo.cs" />
     <Compile Include="Entidades\Maestro\Pais.cs" />
     <Compile Include="Entidades\Maestro\Prioridad.cs" />
-    <Compile Include="Entidades\Maestro\Provincia.cs" />
     <Compile Include="Dto\Maestro\UbigeoDto.cs" />
     <Compile Include="Entidades\Maestro\TipoEstado.cs" />
     <Compile Include="Entidades\Maestro\TipoIncidencia.cs" />

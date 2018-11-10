@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Entidad.Dto.Seguridad;
 using Entidad.Entidades.Seguridad;
+using Entidad.Vo;
 using Negocio.Seguridad;
 
 namespace Api.Controllers.Seguridad
@@ -30,32 +32,42 @@ namespace Api.Controllers.Seguridad
             return _lnRol.ObtenerPorId(idRol);
         }
 
+        [Route("GetCombo")]
+        public List<Rol> GetCombo(DropDownItem opcionCombo, Int32 idEstado)
+        {
+            return _lnRol.ObtenerCombo(opcionCombo, idEstado);
+        }
+
         // POST: api/Rol
-        public IHttpActionResult Post([FromBody]Rol rol)
+        public Int32 Post([FromBody]Rol entidad)
         {
             if (ModelState.IsValid)
             {
-                var result = _lnRol.Registrar(rol);
-                if (result > 0)
-                {
-                    return Ok(result);
-                }
+                return _lnRol.Registrar(entidad);
             }
-            return BadRequest();
+            return 0;
         }
 
         // PUT: api/Rol/5
-        public IHttpActionResult Put([FromBody]Rol rol)
+        [HttpPost]
+        [AcceptVerbs("POST")]
+        [Route("Put")]
+        public Int32 Put([FromBody]Rol rol)
         {
             if (ModelState.IsValid)
             {
-                var result = _lnRol.Modificar(rol);
-                if (result > 0)
-                {
-                    return Ok(result);
-                }
+                return _lnRol.Modificar(rol);
             }
-            return BadRequest();
+            return 0;
+        }
+
+        // DELETE: api/Cliente/5
+        [HttpPost]
+        [AcceptVerbs("POST")]
+        [Route("Delete")]
+        public Int32 Delete([FromBody]Rol entidad)
+        {
+            return _lnRol.Eliminar(entidad.IdRol);
         }
 
     }
