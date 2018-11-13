@@ -29,6 +29,8 @@ namespace Datos.Seguridad
 
                     lista = cn.Query<AccesoDto>(query, new
                         {
+                            filtro.Buscar,
+                            filtro.IdEstado,
                             NumeroPagina = filtro.NumberPage,
                             CantidadRegistros = filtro.Length,
                             ColumnaOrden = filtro.ColumnOrder,

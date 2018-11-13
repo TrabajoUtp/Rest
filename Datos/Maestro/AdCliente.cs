@@ -29,8 +29,7 @@ namespace Datos.Maestro
 
                     lista = cn.Query<ClienteDto>(query, new
                     {
-                        filtro.NumeroDocumento,
-                        filtro.RazonSocial,
+                        filtro.Buscar,
                         filtro.IdEstado,
                         NumeroPagina = filtro.NumberPage,
                         CantidadRegistros = filtro.Length,

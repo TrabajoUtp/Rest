@@ -5,8 +5,7 @@ namespace Entidad.Dto.Gestion
 {
     public class FaqFiltroDto : DataTableNet
     {
-        public String Descripcion { get; set; }
+        public String Buscar { get; set; }
         public Int32 IdCategoriaFaq { get; set; }
-        public Int32 IdEstado { get; set; }
     }
 }

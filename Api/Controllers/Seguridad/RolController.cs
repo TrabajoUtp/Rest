@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using Entidad.Dto.Seguridad;
 using Entidad.Entidades.Seguridad;
@@ -27,7 +25,7 @@ namespace Api.Controllers.Seguridad
         // GET: api/Rol/5
         //[Authorize(Roles = "Administrador Sistema2")]
         [HttpGet]
-        public RolDto Get(int idRol)
+        public Rol Get(int idRol)
         {
             return _lnRol.ObtenerPorId(idRol);
         }

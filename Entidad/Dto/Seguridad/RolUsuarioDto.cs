@@ -1,6 +1,6 @@
 ﻿namespace Entidad.Dto.Seguridad
 {
-    public class RolUsuario
+    public class RolUsuarioDto
     {
         public int IdRolUsuario { get; set; }
         public int IdUsuario { get; set; }

@@ -13,6 +13,13 @@ namespace Entidad.Vo
         public const String Seguridad_usp_Rol_Modificar = "Seguridad.usp_Rol_Modificar";
         public const String Seguridad_usp_Rol_Eliminar = "Seguridad.usp_Rol_Eliminar";
 
+        //Seguridad.Usuario
+        public const String Seguridad_usp_Usuario_Obtener = "Seguridad.usp_Usuario_Obtener";
+        public const String Seguridad_usp_Usuario_Combo = "Seguridad.usp_Usuario_Combo";
+        public const String Seguridad_usp_Usuario_ObtenerPorId = "Seguridad.usp_Usuario_ObtenerPorId";
+        public const String Seguridad_usp_Usuario_Registrar = "Seguridad.usp_Usuario_Registrar";
+        public const String Seguridad_usp_Usuario_Modificar = "Seguridad.usp_Usuario_Modificar";
+        public const String Seguridad_usp_Usuario_Eliminar = "Seguridad.usp_Usuario_Eliminar";
         public const String Seguridad_usp_Usuario_Login = "Seguridad.usp_Usuario_Login";
 
         //Seguridad.Acceso
@@ -33,6 +40,14 @@ namespace Entidad.Vo
         public const String Maestro_usp_Cliente_Registrar = "Maestro.usp_Cliente_Registrar";
         public const String Maestro_usp_Cliente_Modificar = "Maestro.usp_Cliente_Modificar";
         public const String Maestro_usp_Cliente_Eliminar = "Maestro.usp_Cliente_Eliminar";
+
+        //Maestro.TipoIncidencia
+        public const String Maestro_usp_TipoCorreo_Obtener = "Maestro.usp_TipoCorreo_Obtener";
+        public const String Maestro_usp_TipoCorreo_Combo = "Maestro.usp_TipoCorreo_Combo";
+        public const String Maestro_usp_TipoCorreo_ObtenerPorId = "Maestro.usp_TipoCorreo_ObtenerPorId";
+        public const String Maestro_usp_TipoCorreo_Registrar = "Maestro.usp_TipoCorreo_Registrar";
+        public const String Maestro_usp_TipoCorreo_Modificar = "Maestro.usp_TipoCorreo_Modificar";
+        public const String Maestro_usp_TipoCorreo_Eliminar = "Maestro.usp_TipoCorreo_Eliminar";
 
         //Maestro.TipoIncidencia
         public const String Maestro_usp_TipoIncidencia_Obtener = "Maestro.usp_TipoIncidencia_Obtener";
@@ -111,10 +126,27 @@ namespace Entidad.Vo
 
         //Gestion.Faq
         public const String Gestion_usp_Faq_Obtener = "Gestion.usp_Faq_Obtener";
-        public const String Maestro_usp_Faq_Combo = "Gestion.usp_Faq_Combo";
+        public const String Gestion_usp_Faq_Combo = "Gestion.usp_Faq_Combo";
         public const String Gestion_usp_Faq_ObtenerPorId = "Gestion.usp_Faq_ObtenerPorId";
         public const String Gestion_usp_Faq_Registrar = "Gestion.usp_Faq_Registrar";
         public const String Gestion_usp_Faq_Modificar = "Gestion.usp_Faq_Modificar";
         public const String Gestion_usp_Faq_Eliminar = "Gestion.usp_Faq_Eliminar";
+
+        //Gestion.Incidencia
+        public const String Gestion_usp_Incidencia_Obtener = "Gestion.usp_Incidencia_Obtener";
+        public const String Gestion_usp_Incidencia_Combo = "Gestion.usp_Incidencia_Combo";
+        public const String Gestion_usp_Incidencia_ObtenerPorId = "Gestion.usp_Incidencia_ObtenerPorId";
+        public const String Gestion_usp_Incidencia_Registrar = "Gestion.usp_Incidencia_Registrar";
+        public const String Gestion_usp_Incidencia_Modificar = "Gestion.usp_Incidencia_Modificar";
+        public const String Gestion_usp_Incidencia_Eliminar = "Gestion.usp_Incidencia_Eliminar";
+
+        //Gestion.IncidenciaDetalle
+        public const String Gestion_usp_IncidenciaDetalle_Obtener = "Gestion.usp_IncidenciaDetalle_Obtener";
+        public const String Gestion_usp_IncidenciaDetalle_Combo = "Gestion.usp_IncidenciaDetalle_Combo";
+        public const String Gestion_usp_IncidenciaDetalle_ObtenerPorId = "Gestion.usp_IncidenciaDetalle_ObtenerPorId";
+        public const String Gestion_usp_IncidenciaDetalle_Registrar = "Gestion.usp_IncidenciaDetalle_Registrar";
+        public const String Gestion_usp_IncidenciaDetalle_Modificar = "Gestion.usp_IncidenciaDetalle_Modificar";
+        public const String Gestion_usp_IncidenciaDetalle_Eliminar = "Gestion.usp_IncidenciaDetalle_Eliminar";
+
     }
 }

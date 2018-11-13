@@ -29,7 +29,7 @@ namespace Datos.Maestro
 
                     lista = cn.Query<ContactoDto>(query, new
                         {
-                            filtro.Nombre,
+                            filtro.Buscar,
                             filtro.IdCliente,
                             filtro.IdEstado,
                             NumeroPagina = filtro.NumberPage,

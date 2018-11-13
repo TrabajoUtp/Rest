@@ -28,7 +28,7 @@ namespace Datos.Maestro
 
                     lista = cn.Query<PaisDto>(query, new
                         {
-                            filtro.Nombre,
+                            filtro.Buscar,
                             NumeroPagina = filtro.NumberPage,
                             CantidadRegistros = filtro.Length,
                             ColumnaOrden = filtro.ColumnOrder,

@@ -2,7 +2,7 @@
 
 namespace Entidad.Dto.Seguridad
 {
-    public class LoginUsuario
+    public class UsuarioLoginDto
     {
         public int IdUsuario { get; set; }
         public string UserName { get; set; }
@@ -10,11 +10,11 @@ namespace Entidad.Dto.Seguridad
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
 
-        public List<RolUsuario> ListaRolUsuario { get; set; }
+        public List<RolUsuarioDto> ListaRolUsuario { get; set; }
 
-        public LoginUsuario()
+        public UsuarioLoginDto()
         {
-            ListaRolUsuario = new List<RolUsuario>();
+            ListaRolUsuario = new List<RolUsuarioDto>();
             UserName = string.Empty;
             Nombre = string.Empty;
             ApellidoPaterno = string.Empty;

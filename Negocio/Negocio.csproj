@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Gestion\LnFaq.cs" />
+    <Compile Include="Gestion\LnIncidencia.cs" />
+    <Compile Include="Gestion\LnIncidenciaDetalle.cs" />
     <Compile Include="Maestro\LnArea.cs" />
     <Compile Include="Maestro\LnCategoriaFaq.cs" />
     <Compile Include="Maestro\LnCliente.cs" />
@@ -49,13 +51,14 @@
     <Compile Include="Maestro\LnMotivo.cs" />
     <Compile Include="Maestro\LnPais.cs" />
     <Compile Include="Maestro\LnPrioridad.cs" />
+    <Compile Include="Maestro\LnTipoCorreo.cs" />
     <Compile Include="Maestro\LnTipoEstado.cs" />
     <Compile Include="Maestro\LnTipoIncidencia.cs" />
     <Compile Include="Maestro\LnUbigeo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad\LnAcceso.cs" />
     <Compile Include="Seguridad\LnAccesoRol.cs" />
-    <Compile Include="Seguridad\LnLogin.cs" />
+    <Compile Include="Seguridad\LnUsuario.cs" />
     <Compile Include="Seguridad\LnRol.cs" />
   </ItemGroup>
   <ItemGroup />

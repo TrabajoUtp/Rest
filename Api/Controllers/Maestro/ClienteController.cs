@@ -13,7 +13,7 @@ namespace Api.Controllers.Maestro
     {
         private readonly LnCliente _lnCliente = new LnCliente();
 
-        // GET: api/Cliente
+        // POST: api/Cliente/Get => {"Buscar": "","IdEstado":1,"NumberPage":1,"Length":20,"ColumnOrder":"IdCliente","OrderDirection":"asc"}
         [HttpPost]
         [AcceptVerbs("POST")]
         [Route("Get")]
@@ -28,6 +28,7 @@ namespace Api.Controllers.Maestro
             return _lnCliente.ObtenerPorId(idCliente);
         }
 
+        // GET: api/Cliente/GetCombo?opcionCombo=1&idEstado=1
         [Route("GetCombo")]
         public List<Cliente> GetCombo(DropDownItem opcionCombo, Int32 idEstado)
         {

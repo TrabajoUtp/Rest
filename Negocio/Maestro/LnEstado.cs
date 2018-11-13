@@ -48,19 +48,19 @@ namespace Negocio.Maestro
 
         }
 
-        public List<Estado> ObtenerCombo(Int32 idTipoEstado, DropDownItem opcionCombo)
+        public List<EstadoComboDto> ObtenerCombo(Int32 idTipoEstado, DropDownItem opcionCombo)
         {
             var lista = _adEstado.ObtenerCombo(idTipoEstado);
             switch (opcionCombo)
             {
                 case DropDownItem.Ninguno:
-                    lista.Insert(0, new Estado { IdEstado = 0, Nombre = "Ninguno" });
+                    lista.Insert(0, new EstadoComboDto { IdEstado = 0, Nombre = "Ninguno" });
                     break;
                 case DropDownItem.Seleccione:
-                    lista.Insert(0, new Estado { IdEstado = 0, Nombre = "Seleccione" });
+                    lista.Insert(0, new EstadoComboDto { IdEstado = 0, Nombre = "Seleccione" });
                     break;
                 case DropDownItem.Todos:
-                    lista.Insert(0, new Estado { IdEstado = 0, Nombre = "Todos" });
+                    lista.Insert(0, new EstadoComboDto { IdEstado = 0, Nombre = "Todos" });
                     break;
             }
             return lista;

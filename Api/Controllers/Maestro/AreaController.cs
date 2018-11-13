@@ -35,27 +35,27 @@ namespace Api.Controllers.Maestro
         }
 
         // POST: api/Area
-        public Int32 Post([FromBody] Area cliente)
+        public Int32 Post([FromBody] Area area)
         {
-            return _lnArea.Registrar(cliente);
+            return _lnArea.Registrar(area);
         }
 
         // PUT: api/Area/5
         [HttpPost]
         [AcceptVerbs("POST")]
         [Route("Put")]
-        public Int32 Put([FromBody] Area cliente)
+        public Int32 Put([FromBody] Area area)
         {
-            return _lnArea.Modificar(cliente);
+            return _lnArea.Modificar(area);
         }
 
         // DELETE: api/Area/5
         [HttpPost]
         [AcceptVerbs("POST")]
         [Route("Delete")]
-        public Int32 Delete([FromBody] Area cliente)
+        public Int32 Delete([FromBody] Area area)
         {
-            return _lnArea.Eliminar(cliente.IdArea);
+            return _lnArea.Eliminar(area.IdArea);
         }
     }
 }

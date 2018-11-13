@@ -29,7 +29,7 @@ namespace Datos.Maestro
 
                     lista = cn.Query<EstadoDto>(query, new
                         {
-                            filtro.Nombre,
+                            filtro.Buscar,
                             filtro.IdTipoEstado,
                             NumeroPagina = filtro.NumberPage,
                             CantidadRegistros = filtro.Length,
@@ -48,9 +48,9 @@ namespace Datos.Maestro
             return lista;
         }
 
-        public List<Estado> ObtenerCombo(int idTipoEstado)
+        public List<EstadoComboDto> ObtenerCombo(int idTipoEstado)
         {
-            List<Estado> lista;
+            List<EstadoComboDto> lista;
             const string query = StoreProcedure.Maestro_usp_Estado_Combo;
 
             using (var cn = HelperClass.ObtenerConeccion())
@@ -60,7 +60,7 @@ namespace Datos.Maestro
                     cn.Open();
                 }
 
-                lista = cn.Query<Estado>(query, new
+                lista = cn.Query<EstadoComboDto>(query, new
                 {
                     IdTipoEstado = idTipoEstado
                 }, commandType: CommandType.StoredProcedure).ToList();

@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Gestion\AdFaq.cs" />
+    <Compile Include="Gestion\AdIncidencia.cs" />
+    <Compile Include="Gestion\AdIncidenciaDetalle.cs" />
     <Compile Include="Helper\HelperClass.cs" />
     <Compile Include="Maestro\AdArea.cs" />
     <Compile Include="Maestro\AdCategoriaFaq.cs" />
@@ -59,14 +61,15 @@
     <Compile Include="Maestro\AdMotivo.cs" />
     <Compile Include="Maestro\AdPais.cs" />
     <Compile Include="Maestro\AdPrioridad.cs" />
+    <Compile Include="Maestro\AdTipoCorreo.cs" />
     <Compile Include="Maestro\AdTipoEstado.cs" />
     <Compile Include="Maestro\AdTipoIncidencia.cs" />
     <Compile Include="Maestro\AdUbigeo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad\AdAcceso.cs" />
     <Compile Include="Seguridad\AdAccesoRol.cs" />
-    <Compile Include="Seguridad\AdLogin.cs" />
     <Compile Include="Seguridad\AdRol.cs" />
+    <Compile Include="Seguridad\AdUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -9,7 +9,6 @@ namespace Entidad.Dto.Maestro
 {
     public class TipoEstadoFiltroDto: DataTableNet
     {
-        public String Nombre { get; set; }
-        public String Observacion { get; set; }
+        public String Buscar { get; set; }
     }
 }

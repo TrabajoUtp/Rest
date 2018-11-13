@@ -5,10 +5,7 @@ namespace Entidad.Dto.Maestro
 {
     public class ClienteFiltroDto : DataTableNet
     {
-        public Int32 IdCliente { get; set; }
-        public String NumeroDocumento { get; set; }
-        public String RazonSocial { get; set; }
-        public String Direccion { get; set; }
+        public String Buscar { get; set; }
         public Int32 IdEstado { get; set; }
         
     }

@@ -29,7 +29,7 @@ namespace Datos.Gestion
 
                     lista = cn.Query<FaqDto>(query, new
                         {
-                            filtro.Descripcion,
+                            filtro.Buscar,
                             filtro.IdCategoriaFaq,
                             NumeroPagina = filtro.NumberPage,
                             CantidadRegistros = filtro.Length,
@@ -51,7 +51,7 @@ namespace Datos.Gestion
         public List<Faq> ObtenerCombo()
         {
             List<Faq> lista;
-            const string query = StoreProcedure.Maestro_usp_Faq_Combo;
+            const string query = StoreProcedure.Gestion_usp_Faq_Combo;
 
             using (var cn = HelperClass.ObtenerConeccion())
             {

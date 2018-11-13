@@ -29,8 +29,7 @@ namespace Datos.Maestro
 
                     lista = cn.Query<TipoIncidenciaDto>(query, new
                         {
-                            filtro.Nombre,
-                            filtro.Observacion,
+                            filtro.Buscar,
                             filtro.IdEstado,
                             NumeroPagina = filtro.NumberPage,
                             CantidadRegistros = filtro.Length,

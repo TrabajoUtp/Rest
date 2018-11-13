@@ -29,7 +29,7 @@ namespace Datos.Seguridad
 
                     lista = cn.Query<RolDto>(query, new
                     {
-                        filtro.Nombre,
+                        filtro.Buscar,
                         filtro.IdEstado,
                         NumeroPagina = filtro.NumberPage,
                         CantidadRegistros = filtro.Length,
@@ -69,10 +69,10 @@ namespace Datos.Seguridad
             return lista;
         }
 
-        public RolDto ObtenerPorId(int id)
+        public Rol ObtenerPorId(int id)
         {
 
-            RolDto rol;
+            Rol rol;
 
             try
             {
@@ -84,7 +84,7 @@ namespace Datos.Seguridad
                         cn.Open();
                     }
 
-                    rol = cn.Query<RolDto>(query, new
+                    rol = cn.Query<Rol>(query, new
                     {
                         IdRol = id
                     },
@@ -115,7 +115,6 @@ namespace Datos.Seguridad
 
                     respuesta = cn.Execute(query, new
                     {
-                        entidad.IdRol,
                         entidad.Nombre,
                         entidad.Observacion,
                         entidad.IdEstado

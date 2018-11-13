@@ -189,6 +189,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Auth\AuthorizeAttribute.cs" />
+    <Compile Include="Controllers\Gestion\IncidenciaController.cs" />
+    <Compile Include="Controllers\Gestion\IncidenciaDetalleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Maestro\AreaController.cs" />
     <Compile Include="Controllers\Maestro\CategoriaFaqController.cs" />
@@ -199,12 +201,14 @@
     <Compile Include="Controllers\Maestro\MotivoController.cs" />
     <Compile Include="Controllers\Maestro\PaisController.cs" />
     <Compile Include="Controllers\Maestro\PrioridadController.cs" />
+    <Compile Include="Controllers\Maestro\TipoCorreoController.cs" />
     <Compile Include="Controllers\Maestro\TipoEstadoController.cs" />
     <Compile Include="Controllers\Maestro\TipoIncidenciaController.cs" />
     <Compile Include="Controllers\Maestro\UbigeoController.cs" />
     <Compile Include="Controllers\Seguridad\AccesoController.cs" />
     <Compile Include="Controllers\Seguridad\AccesoRolController.cs" />
     <Compile Include="Controllers\Seguridad\RolController.cs" />
+    <Compile Include="Controllers\Seguridad\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

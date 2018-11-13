@@ -54,13 +54,13 @@ namespace Negocio.Maestro
             switch (opcionCombo)
             {
                 case DropDownItem.Ninguno:
-                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Ninguno" });
+                    lista.Insert(0, new Cliente { IdCliente = 0, NumeroDocumento = "", RazonSocial = "Ninguno" });
                     break;
                 case DropDownItem.Seleccione:
-                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Seleccione" });
+                    lista.Insert(0, new Cliente { IdCliente = 0, NumeroDocumento = "", RazonSocial = "Seleccione" });
                     break;
                 case DropDownItem.Todos:
-                    lista.Insert(0, new Cliente { IdCliente = 0, RazonSocial = "Todos" });
+                    lista.Insert(0, new Cliente { IdCliente = 0, NumeroDocumento = "", RazonSocial = "Todos" });
                     break;
             }
             return lista;

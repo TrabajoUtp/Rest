@@ -9,7 +9,7 @@ namespace Entidad.Dto.Maestro
         public String Abreviatura { get; set; }
         public String Nombre { get; set; }
         public String Observacion { get; set; }
-        public String NombreEstado { get; set; }
+        public Int32 IdEstado { get; set; }
         public Int32 TotalItems { get; set; }
     }
 }

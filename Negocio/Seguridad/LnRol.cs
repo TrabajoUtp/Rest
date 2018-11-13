@@ -66,7 +66,7 @@ namespace Negocio.Seguridad
             return lista;
         }
 
-        public RolDto ObtenerPorId(int id)
+        public Rol ObtenerPorId(int id)
         {
             return _adRol.ObtenerPorId(id);
         }

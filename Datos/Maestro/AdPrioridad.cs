@@ -29,7 +29,7 @@ namespace Datos.Maestro
 
                     lista = cn.Query<PrioridadDto>(query, new
                         {
-                            filtro.Nombre,
+                            filtro.Buscar,
                             filtro.IdEstado,
                             NumeroPagina = filtro.NumberPage,
                             CantidadRegistros = filtro.Length,

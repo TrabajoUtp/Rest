@@ -12,7 +12,7 @@ namespace Api
 {
     public class MyAuthAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
-        private readonly LnLogin _lnLogin = new LnLogin();
+        private readonly LnUsuario _lnLogin = new LnUsuario();
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             context.Validated();
@@ -47,7 +47,7 @@ namespace Api
             identity.AddClaim(new Claim("apellido", usuario.ApellidoPaterno));
             //identity.AddClaim(new Claim("idusuario", usuario.IdUsuario.ToString()));
 
-            foreach (RolUsuario rolUsu in usuario.ListaRolUsuario)
+            foreach (RolUsuarioDto rolUsu in usuario.ListaRolUsuario)
             {
                 identity.AddClaim(new Claim(ClaimTypes.Role, rolUsu.NombreRol));
             }
