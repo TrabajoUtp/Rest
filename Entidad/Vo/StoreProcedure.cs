@@ -139,6 +139,9 @@ namespace Entidad.Vo
         public const String Gestion_usp_Incidencia_Registrar = "Gestion.usp_Incidencia_Registrar";
         public const String Gestion_usp_Incidencia_Modificar = "Gestion.usp_Incidencia_Modificar";
         public const String Gestion_usp_Incidencia_Eliminar = "Gestion.usp_Incidencia_Eliminar";
+        public const String Gestion_usp_Incidencia_ObtenerHistorial = "Gestion.usp_Incidencia_ObtenerHistorial";
+        public const String Gestion_usp_Incidencia_ObtenerPorId_Detallado = "Gestion.usp_Incidencia_ObtenerPorId_Detallado";
+        public const String Gestion_usp_Incidencia_ModificarEstado = "Gestion.usp_Incidencia_ModificarEstado";
 
         //Gestion.IncidenciaDetalle
         public const String Gestion_usp_IncidenciaDetalle_Obtener = "Gestion.usp_IncidenciaDetalle_Obtener";

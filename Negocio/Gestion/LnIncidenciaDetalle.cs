@@ -24,6 +24,19 @@ namespace Negocio.Gestion
                 lista = _adIncidenciaDetalle.Obtener(filtro);
                 if (lista.Any())
                 {
+                    if (filtro.RecortarDescripcion)
+                    {
+                        //Recortar a 50 caracteres + ...
+                        //foreach (var detalleDto in lista)
+                        //{
+                        //    if (detalleDto.Descripcion.Length > 50)
+                        //    {
+                        //        String nuevoTexto = String.Format("{0} <span class='badge badge-pill badge-success'>Leer mas...</span>", detalleDto.Descripcion.Substring(0, 50));
+                        //        detalleDto.Descripcion = nuevoTexto;
+                        //    }
+                        //}
+                    }
+
                     totalRegistros = lista.First().TotalItems;
                 }
             }
@@ -66,6 +79,25 @@ namespace Negocio.Gestion
         public Int32 Eliminar(Int32 id)
         {
             return _adIncidenciaDetalle.Eliminar(id);
+        }
+
+        public Int32 RegistrarHistorial(IncidenciaEstadoDto entidad)
+        {
+            LnIncidencia lnIncidencia = new LnIncidencia();
+            Int32 resultGeneral = 0;
+
+            IncidenciaDetalle filtroDetalle = new IncidenciaDetalle();
+            filtroDetalle.IdIncidencia = entidad.IdIncidencia;
+            filtroDetalle.IdArea = entidad.IdArea;
+            filtroDetalle.Descripcion = entidad.Descripcion;
+            filtroDetalle.IdUsuario = entidad.IdUsuario;
+
+            Int32 resultHistorial = _adIncidenciaDetalle.Registrar(filtroDetalle);
+            if (resultHistorial > 0)
+            {
+                resultGeneral = lnIncidencia.ModificarEstado(entidad);
+            }
+            return resultGeneral;
         }
     }
 }

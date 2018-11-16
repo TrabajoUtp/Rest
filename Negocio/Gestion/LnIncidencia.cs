@@ -11,8 +11,7 @@ namespace Negocio.Gestion
     public class LnIncidencia
     {
         private readonly AdIncidencia _adIncidencia = new AdIncidencia();
-        private readonly LnIncidenciaDetalle _lnIncidenciaDetalle = new LnIncidenciaDetalle();
-
+        
         public ResultDataTable Obtener(IncidenciaFiltroDto filtro)
         {
             ResultDataTable result;
@@ -74,6 +73,8 @@ namespace Negocio.Gestion
 
         public Int32 Registrar(Incidencia entidad)
         {
+            LnIncidenciaDetalle lnIncidenciaDetalle = new LnIncidenciaDetalle();
+
             Int32 idIncidenciaDetalleResultado = 0;
             Int32 idIncidenciaNuevo = 0;
             Int32 idIncidenciaResultado = _adIncidencia.Registrar(entidad, ref idIncidenciaNuevo);
@@ -82,7 +83,7 @@ namespace Negocio.Gestion
                 foreach (IncidenciaDetalle detalle in entidad.ListaDetalle)
                 {
                     detalle.IdIncidencia = idIncidenciaNuevo;
-                    idIncidenciaDetalleResultado = _lnIncidenciaDetalle.Registrar(detalle);
+                    idIncidenciaDetalleResultado = lnIncidenciaDetalle.Registrar(detalle);
                 }
             }
             return idIncidenciaDetalleResultado;
@@ -98,5 +99,24 @@ namespace Negocio.Gestion
         {
             return _adIncidencia.Eliminar(id);
         }
+
+        public List<IncidenciaHistorialDto> ObtenerHistorial(int idIncidencia, int idIncidenciaDetalle)
+        {
+            IncidenciaFiltroDto filtro = new IncidenciaFiltroDto();
+            filtro.IdIncidencia = idIncidencia;
+            filtro.IdIncidenciaDetalle = idIncidenciaDetalle;
+            return _adIncidencia.ObtenerHistorial(filtro);
+        }
+
+        public IncidenciaDetalladoDto ObtenerPorIdDetallado(int id)
+        {
+            return _adIncidencia.ObtenerPorIdDetallado(id);
+        }
+
+        public Int32 ModificarEstado(IncidenciaEstadoDto entidad)
+        {
+            return _adIncidencia.ModificarEstado(entidad);
+        }
+
     }
 }

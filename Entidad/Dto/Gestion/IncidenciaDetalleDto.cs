@@ -5,6 +5,7 @@ namespace Entidad.Dto.Gestion
     public class IncidenciaDetalleDto
     {
         public Int32 Item { get; set; }
+        public Int32 IdIncidencia { get; set; }
         public Int32 IdIncidenciaDetalle { get; set; }
         public String UserName { get; set; }
         public String NombreArea { get; set; }

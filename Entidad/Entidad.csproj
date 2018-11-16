@@ -43,10 +43,13 @@
   <ItemGroup>
     <Compile Include="Dto\Gestion\FaqDto.cs" />
     <Compile Include="Dto\Gestion\FaqFiltroDto.cs" />
+    <Compile Include="Dto\Gestion\IncidenciaDetalladoDto.cs" />
     <Compile Include="Dto\Gestion\IncidenciaDetalleDto.cs" />
     <Compile Include="Dto\Gestion\IncidenciaDetalleFiltroDto.cs" />
     <Compile Include="Dto\Gestion\IncidenciaDto.cs" />
+    <Compile Include="Dto\Gestion\IncidenciaEstadoDto.cs" />
     <Compile Include="Dto\Gestion\IncidenciaFiltroDto.cs" />
+    <Compile Include="Dto\Gestion\IncidenciaHistorialDto.cs" />
     <Compile Include="Dto\Maestro\AreaDto.cs" />
     <Compile Include="Dto\Maestro\AreaFiltroDto.cs" />
     <Compile Include="Dto\Maestro\CategoriaFaqDto.cs" />

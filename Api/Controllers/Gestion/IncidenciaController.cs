@@ -49,5 +49,20 @@ namespace Api.Controllers.Gestion
         {
             return _lnIncidencia.Eliminar(faq.IdIncidencia);
         }
+
+        [HttpGet]
+        [Route("ObtenerHistorial")]
+        public IHttpActionResult ObtenerHistorial(int idIncidencia, int idIncidenciaDetalle)
+        {
+            return Json(_lnIncidencia.ObtenerHistorial(idIncidencia, idIncidenciaDetalle));
+        }
+
+        [HttpGet]
+        [Route("ObtenerPorIdDetallado")]
+        public IncidenciaDetalladoDto ObtenerPorIdDetallado(int idIncidencia)
+        {
+            return _lnIncidencia.ObtenerPorIdDetallado(idIncidencia);
+        }
+
     }
 }

@@ -67,6 +67,117 @@ namespace Negocio.Maestro
 
         }
 
+        public List<EstadoComboDto> ObtenerComboConExcepcion(Int32 idTipoEstado, DropDownItem opcionCombo, String idsaExcluir)
+        {
+            var lista = _adEstado.ObtenerCombo(idTipoEstado);
+
+            try
+            {
+                if (lista.Any())
+                {
+                    if (!String.IsNullOrEmpty(idsaExcluir))
+                    {
+                        //Remover los registros de la variable idsaExcluir
+                        List<int> listaIdEstadoExcluir = idsaExcluir.Split(',').Select(int.Parse).ToList();
+                        if (listaIdEstadoExcluir.Any())
+                        {
+                            foreach (int idaBuscar in listaIdEstadoExcluir)
+                            {
+                                for (int i = lista.Count - 1; i >= 0; i--)
+                                {
+                                    if (lista[i].IdEstado == idaBuscar)
+                                    {
+                                        lista.RemoveAt(i);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch { }
+
+
+            switch (opcionCombo)
+            {
+                case DropDownItem.Ninguno:
+                    lista.Insert(0, new EstadoComboDto { IdEstado = 0, Nombre = "Ninguno" });
+                    break;
+                case DropDownItem.Seleccione:
+                    lista.Insert(0, new EstadoComboDto { IdEstado = 0, Nombre = "Seleccione" });
+                    break;
+                case DropDownItem.Todos:
+                    lista.Insert(0, new EstadoComboDto { IdEstado = 0, Nombre = "Todos" });
+                    break;
+            }
+            return lista;
+
+        }
+
+        public List<EstadoComboDto> ObtenerComboPorId(Int32 idTipoEstado, DropDownItem opcionCombo, String idsaIncluir)
+        {
+            var lista = new List<EstadoComboDto>();
+
+            if (!String.IsNullOrEmpty(idsaIncluir))
+            {
+                lista = _adEstado.ObtenerCombo(idTipoEstado);
+            }
+            
+
+            try
+            {
+                if (lista.Any())
+                {
+                    if (!String.IsNullOrEmpty(idsaIncluir))
+                    {
+                        //Solo considerar los registros de la variable idsaIncluir
+                        List<int> listaIdEstadoIncluir = idsaIncluir.Split(',').Select(int.Parse).ToList();
+                        if (listaIdEstadoIncluir.Any())
+                        {
+
+                            for (int i = lista.Count - 1; i >= 0; i--)
+                            {
+                                Boolean existeRegistro = false;
+                                foreach (int idaBuscar in listaIdEstadoIncluir)
+                                {
+                                    if (idaBuscar == lista[i].IdEstado)
+                                    {
+                                        //Si lo encontro
+                                        existeRegistro = true;
+                                        break;
+                                    }
+                                }
+
+                                if (!existeRegistro)
+                                {
+                                    lista.RemoveAt(i);
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch { }
+
+
+            switch (opcionCombo)
+            {
+                case DropDownItem.Ninguno:
+                    lista.Insert(0, new EstadoComboDto { IdEstado = 0, Nombre = "Ninguno" });
+                    break;
+                case DropDownItem.Seleccione:
+                    lista.Insert(0, new EstadoComboDto { IdEstado = 0, Nombre = "Seleccione" });
+                    break;
+                case DropDownItem.Todos:
+                    lista.Insert(0, new EstadoComboDto { IdEstado = 0, Nombre = "Todos" });
+                    break;
+            }
+            return lista;
+
+        }
+
         public Estado ObtenerPorId(int id)
         {
             return _adEstado.ObtenerPorId(id);

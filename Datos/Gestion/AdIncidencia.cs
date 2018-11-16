@@ -32,7 +32,6 @@ namespace Datos.Gestion
                             filtro.IdCliente,
                             filtro.Asunto,
                             filtro.IdTipoIncidencia,
-                            filtro.IdMotivo,
                             filtro.IdPrioridad,
                             filtro.IdEstado,
                             filtro.FechaInicio,
@@ -117,7 +116,6 @@ namespace Datos.Gestion
                 p.Add("IdCliente", entidad.IdCliente);
                 p.Add("Asunto", entidad.Asunto);
                 p.Add("IdTipoIncidencia", entidad.IdTipoIncidencia);
-                p.Add("IdMotivo", entidad.IdMotivo);
                 p.Add("IdPrioridad", entidad.IdPrioridad);
                 p.Add("IdEstado", entidad.IdEstado);
                 p.Add("IdUsuarioRegistra", entidad.IdUsuarioRegistra);
@@ -161,7 +159,6 @@ namespace Datos.Gestion
                             entidad.IdCliente,
                             entidad.Asunto,
                             entidad.IdTipoIncidencia,
-                            entidad.IdMotivo,
                             entidad.IdPrioridad,
                             entidad.IdEstado,
                             entidad.IdUsuarioRegistra
@@ -206,5 +203,101 @@ namespace Datos.Gestion
             }
             return respuesta;
         }
+
+        public List<IncidenciaHistorialDto> ObtenerHistorial(IncidenciaFiltroDto filtro)
+        {
+
+            List<IncidenciaHistorialDto> lista;
+
+            try
+            {
+                const string query = StoreProcedure.Gestion_usp_Incidencia_ObtenerHistorial;
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    lista = cn.Query<IncidenciaHistorialDto>(query, new
+                        {
+                            filtro.IdIncidencia,
+                            filtro.IdIncidenciaDetalle
+                        },
+                        commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return lista;
+        }
+
+        public IncidenciaDetalladoDto ObtenerPorIdDetallado(int id)
+        {
+
+            IncidenciaDetalladoDto entidad;
+
+            try
+            {
+                const string query = StoreProcedure.Gestion_usp_Incidencia_ObtenerPorId_Detallado;
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    entidad = cn.Query<IncidenciaDetalladoDto>(query, new
+                        {
+                            IdIncidencia = id
+                        },
+                        commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return entidad;
+        }
+
+        public Int32 ModificarEstado(IncidenciaEstadoDto entidad)
+        {
+            Int32 respuesta;
+            try
+            {
+                const string query = StoreProcedure.Gestion_usp_Incidencia_ModificarEstado;
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    respuesta = cn.Execute(query, new
+                        {
+                            entidad.IdIncidencia,
+                            entidad.IdEstado,
+                            entidad.IdUsuario,
+                            entidad.Finalizado
+                        },
+                        commandType: CommandType.StoredProcedure);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return respuesta;
+        }
+
     }
 }

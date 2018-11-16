@@ -56,5 +56,17 @@ namespace Api.Controllers.Maestro
         {
             return _lnEstado.Eliminar(cliente.IdEstado);
         }
+
+        [Route("GetComboConExcepcion")]
+        public List<EstadoComboDto> GetComboConExcepcion(DropDownItem opcionCombo, int idTipoEstado, String idsaExcluir)
+        {
+            return _lnEstado.ObtenerComboConExcepcion(idTipoEstado, opcionCombo, idsaExcluir);
+        }
+
+        [Route("GetComboPorId")]
+        public List<EstadoComboDto> GetComboPorId(DropDownItem opcionCombo, int idTipoEstado, String idsaIncluir)
+        {
+            return _lnEstado.ObtenerComboPorId(idTipoEstado, opcionCombo, idsaIncluir);
+        }
     }
 }
