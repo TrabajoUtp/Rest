@@ -48,9 +48,71 @@ namespace Negocio.Maestro
 
         }
 
+        public ResultDataTable ObtenerPendientesPorUsuario(ClienteFiltroDto filtro)
+        {
+            ResultDataTable result;
+            int totalRegistros = 0;
+            List<ClienteDto> lista = new List<ClienteDto>();
+            string mensajeError = "";
+
+            try
+            {
+                if (filtro.IdUsuario == 0)
+                {
+                    lista = new List<ClienteDto>();
+                }
+                else
+                {
+                    lista = _adCliente.ObtenerPendientesPorUsuario(filtro);
+                }
+                
+                if (lista.Any())
+                {
+                    totalRegistros = lista.First().TotalItems;
+                }
+            }
+            catch (Exception ex)
+            {
+                mensajeError = ex.Message;
+            }
+            finally
+            {
+                result = new ResultDataTable
+                {
+                    draw = filtro.Draw,
+                    recordsTotal = totalRegistros,
+                    recordsFiltered = totalRegistros,
+                    data = lista,
+                    error = mensajeError
+                };
+
+            }
+
+            return result;
+
+        }
+
         public List<Cliente> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
         {
             var lista = _adCliente.ObtenerCombo(idEstado);
+            switch (opcionCombo)
+            {
+                case DropDownItem.Ninguno:
+                    lista.Insert(0, new Cliente { IdCliente = 0, NumeroDocumento = "", RazonSocial = "Ninguno" });
+                    break;
+                case DropDownItem.Seleccione:
+                    lista.Insert(0, new Cliente { IdCliente = 0, NumeroDocumento = "", RazonSocial = "Seleccione" });
+                    break;
+                case DropDownItem.Todos:
+                    lista.Insert(0, new Cliente { IdCliente = 0, NumeroDocumento = "", RazonSocial = "Todos" });
+                    break;
+            }
+            return lista;
+        }
+
+        public List<Cliente> ObtenerComboPorIdUsuario(DropDownItem opcionCombo, Int32 idEstado, Int32 idUsuario)
+        {
+            var lista = _adCliente.ObtenerComboPorIdUsuario(idEstado, idUsuario);
             switch (opcionCombo)
             {
                 case DropDownItem.Ninguno:

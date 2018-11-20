@@ -22,6 +22,14 @@ namespace Api.Controllers.Maestro
             return Json(_lnCliente.Obtener(filtro));
         }
 
+        [HttpPost]
+        [AcceptVerbs("POST")]
+        [Route("ObtenerPendientesPorUsuario")]
+        public IHttpActionResult GetPendientesPorUsuario([FromBody]ClienteFiltroDto filtro)
+        {
+            return Json(_lnCliente.ObtenerPendientesPorUsuario(filtro));
+        }
+
         // GET: api/Cliente/5
         public Cliente Get(int idCliente)
         {
@@ -33,6 +41,13 @@ namespace Api.Controllers.Maestro
         public List<Cliente> GetCombo(DropDownItem opcionCombo, Int32 idEstado)
         {
             return _lnCliente.ObtenerCombo(opcionCombo, idEstado);
+        }
+
+        // GET: api/Cliente/GetComboPorIdUsuario?opcionCombo=1&idEstado=1
+        [Route("GetComboPorIdUsuario")]
+        public List<Cliente> GetComboPorIdUsuario(DropDownItem opcionCombo, Int32 idEstado, Int32 idUsuario)
+        {
+            return _lnCliente.ObtenerComboPorIdUsuario(opcionCombo, idEstado, idUsuario);
         }
 
         // POST: api/Cliente

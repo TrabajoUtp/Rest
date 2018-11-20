@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\Asignacion\UsuarioClienteDto.cs" />
+    <Compile Include="Dto\Asignacion\UsuarioClienteFiltroDto.cs" />
     <Compile Include="Dto\Gestion\FaqDto.cs" />
     <Compile Include="Dto\Gestion\FaqFiltroDto.cs" />
     <Compile Include="Dto\Gestion\IncidenciaDetalladoDto.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Dto\Seguridad\RolFiltroDto.cs" />
     <Compile Include="Dto\Seguridad\UsuarioDto.cs" />
     <Compile Include="Dto\Seguridad\UsuarioFiltroDto.cs" />
+    <Compile Include="Entidades\Asignacion\UsuarioCliente.cs" />
     <Compile Include="Entidades\Gestion\Faq.cs" />
     <Compile Include="Entidades\Gestion\Incidencia.cs" />
     <Compile Include="Entidades\Gestion\IncidenciaDetalle.cs" />

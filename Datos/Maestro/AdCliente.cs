@@ -48,6 +48,41 @@ namespace Datos.Maestro
             return lista;
         }
 
+        public List<ClienteDto> ObtenerPendientesPorUsuario(ClienteFiltroDto filtro)
+        {
+
+            List<ClienteDto> lista;
+
+            try
+            {
+                const string query = StoreProcedure.Maestro_usp_Cliente_ObtenerPendientesPorUsuario;
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    lista = cn.Query<ClienteDto>(query, new
+                        {
+                            filtro.Buscar,
+                            filtro.IdEstado,
+                            filtro.IdUsuario,
+                            ColumnaOrden = filtro.ColumnOrder,
+                            DireccionOrden = filtro.OrderDirection
+                        },
+                        commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return lista;
+        }
+
         public List<Cliente> ObtenerCombo(Int32 idEstado)
         {
             List<Cliente> lista;
@@ -63,6 +98,28 @@ namespace Datos.Maestro
                 lista = cn.Query<Cliente>(query, new
                 {
                     IdEstado = idEstado
+                }, commandType: CommandType.StoredProcedure).ToList();
+
+            }
+            return lista;
+        }
+
+        public List<Cliente> ObtenerComboPorIdUsuario(Int32 idEstado, Int32 idUsuario)
+        {
+            List<Cliente> lista;
+            const string query = StoreProcedure.Maestro_usp_Cliente_ComboPorIdUsuario;
+
+            using (var cn = HelperClass.ObtenerConeccion())
+            {
+                if (cn.State == ConnectionState.Closed)
+                {
+                    cn.Open();
+                }
+
+                lista = cn.Query<Cliente>(query, new
+                {
+                    IdEstado = idEstado,
+                    IdUsuario = idUsuario
                 }, commandType: CommandType.StoredProcedure).ToList();
 
             }

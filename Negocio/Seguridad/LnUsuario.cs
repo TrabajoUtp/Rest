@@ -54,13 +54,13 @@ namespace Negocio.Seguridad
             switch (opcionCombo)
             {
                 case DropDownItem.Ninguno:
-                    lista.Insert(0, new Usuario { IdUsuario = 0, Nombre = "Ninguno" });
+                    lista.Insert(0, new Usuario { IdUsuario = 0, Nombre = "Ninguno", UserName = "Ninguno" });
                     break;
                 case DropDownItem.Seleccione:
-                    lista.Insert(0, new Usuario { IdUsuario = 0, Nombre = "Seleccione" });
+                    lista.Insert(0, new Usuario { IdUsuario = 0, Nombre = "Seleccione", UserName = "Seleccione" });
                     break;
                 case DropDownItem.Todos:
-                    lista.Insert(0, new Usuario { IdUsuario = 0, Nombre = "Todos" });
+                    lista.Insert(0, new Usuario { IdUsuario = 0, Nombre = "Todos", UserName = "Todos" });
                     break;
             }
             return lista;

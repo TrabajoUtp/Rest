@@ -7,6 +7,7 @@ namespace Entidad.Dto.Maestro
     {
         public String Buscar { get; set; }
         public Int32 IdEstado { get; set; }
+        public Int32 IdUsuario { get; set; }
         
     }
 }

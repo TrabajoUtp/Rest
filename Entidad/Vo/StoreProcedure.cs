@@ -40,6 +40,8 @@ namespace Entidad.Vo
         public const String Maestro_usp_Cliente_Registrar = "Maestro.usp_Cliente_Registrar";
         public const String Maestro_usp_Cliente_Modificar = "Maestro.usp_Cliente_Modificar";
         public const String Maestro_usp_Cliente_Eliminar = "Maestro.usp_Cliente_Eliminar";
+        public const String Maestro_usp_Cliente_ObtenerPendientesPorUsuario = "Maestro.usp_Cliente_ObtenerPendientesPorUsuario";
+        public const String Maestro_usp_Cliente_ComboPorIdUsuario = "Maestro.usp_Cliente_ComboPorIdUsuario";
 
         //Maestro.TipoIncidencia
         public const String Maestro_usp_TipoCorreo_Obtener = "Maestro.usp_TipoCorreo_Obtener";
@@ -150,6 +152,11 @@ namespace Entidad.Vo
         public const String Gestion_usp_IncidenciaDetalle_Registrar = "Gestion.usp_IncidenciaDetalle_Registrar";
         public const String Gestion_usp_IncidenciaDetalle_Modificar = "Gestion.usp_IncidenciaDetalle_Modificar";
         public const String Gestion_usp_IncidenciaDetalle_Eliminar = "Gestion.usp_IncidenciaDetalle_Eliminar";
+
+        public const String Asignacion_usp_UsuarioCliente_ObtenerPorIdUsuario = "Asignacion.usp_UsuarioCliente_ObtenerPorIdUsuario";
+        public const String Asignacion_usp_UsuarioCliente_Registrar = "Asignacion.usp_UsuarioCliente_Registrar";
+        public const String Asignacion_usp_UsuarioCliente_Eliminar = "Asignacion.usp_UsuarioCliente_Eliminar";
+        public const String Asignacion_usp_UsuarioCliente_ObtenerPorId = "Asignacion.usp_UsuarioCliente_ObtenerPorId";
 
     }
 }
