@@ -48,6 +48,41 @@ namespace Datos.Seguridad
             return lista;
         }
 
+        public List<UsuarioDto> ObtenerPendientesPorRol(UsuarioFiltroDto filtro)
+        {
+
+            List<UsuarioDto> lista;
+
+            try
+            {
+                const string query = StoreProcedure.Seguridad_usp_Usuario_ObtenerPendientesPorRol;
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    lista = cn.Query<UsuarioDto>(query, new
+                        {
+                            filtro.Buscar,
+                            filtro.IdEstado,
+                            filtro.IdRol,
+                            ColumnaOrden = filtro.ColumnOrder,
+                            DireccionOrden = filtro.OrderDirection
+                        },
+                        commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return lista;
+        }
+
         public List<Usuario> ObtenerCombo(Int32 idEstado)
         {
             List<Usuario> lista;

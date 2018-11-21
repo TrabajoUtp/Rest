@@ -12,6 +12,7 @@ namespace Entidad.Vo
         public const String Seguridad_usp_Rol_Registrar = "Seguridad.usp_Rol_Registrar";
         public const String Seguridad_usp_Rol_Modificar = "Seguridad.usp_Rol_Modificar";
         public const String Seguridad_usp_Rol_Eliminar = "Seguridad.usp_Rol_Eliminar";
+        
 
         //Seguridad.Usuario
         public const String Seguridad_usp_Usuario_Obtener = "Seguridad.usp_Usuario_Obtener";
@@ -20,6 +21,7 @@ namespace Entidad.Vo
         public const String Seguridad_usp_Usuario_Registrar = "Seguridad.usp_Usuario_Registrar";
         public const String Seguridad_usp_Usuario_Modificar = "Seguridad.usp_Usuario_Modificar";
         public const String Seguridad_usp_Usuario_Eliminar = "Seguridad.usp_Usuario_Eliminar";
+        public const String Seguridad_usp_Usuario_ObtenerPendientesPorRol = "Seguridad.usp_Usuario_ObtenerPendientesPorRol";
         public const String Seguridad_usp_Usuario_Login = "Seguridad.usp_Usuario_Login";
 
         //Seguridad.Acceso
@@ -157,6 +159,11 @@ namespace Entidad.Vo
         public const String Asignacion_usp_UsuarioCliente_Registrar = "Asignacion.usp_UsuarioCliente_Registrar";
         public const String Asignacion_usp_UsuarioCliente_Eliminar = "Asignacion.usp_UsuarioCliente_Eliminar";
         public const String Asignacion_usp_UsuarioCliente_ObtenerPorId = "Asignacion.usp_UsuarioCliente_ObtenerPorId";
+
+        public const String Asignacion_usp_RolUsuario_ObtenerPorIdRol = "Asignacion.usp_RolUsuario_ObtenerPorIdRol";
+        public const String Asignacion_usp_RolUsuario_Registrar = "Asignacion.usp_RolUsuario_Registrar";
+        public const String Asignacion_usp_RolUsuario_Eliminar = "Asignacion.usp_RolUsuario_Eliminar";
+        public const String Asignacion_usp_RolUsuario_ObtenerPorId = "Asignacion.usp_RolUsuario_ObtenerPorId";
 
     }
 }

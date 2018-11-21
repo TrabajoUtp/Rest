@@ -7,5 +7,6 @@ namespace Entidad.Dto.Seguridad
     {
         public String Buscar { get; set; }
         public Int32 IdEstado { get; set; }
+        public Int32 IdRol { get; set; }
     }
 }

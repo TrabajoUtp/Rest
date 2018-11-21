@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asignacion\AdRolUsuario.cs" />
     <Compile Include="Asignacion\AdUsuarioCliente.cs" />
     <Compile Include="Gestion\AdFaq.cs" />
     <Compile Include="Gestion\AdIncidencia.cs" />

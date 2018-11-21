@@ -22,6 +22,14 @@ namespace Api.Controllers.Seguridad
             return Json(_lnUsuario.Obtener(filtro));
         }
 
+        [HttpPost]
+        [AcceptVerbs("POST")]
+        [Route("ObtenerPendientesPorRol")]
+        public IHttpActionResult GetPendientesPorRol([FromBody]UsuarioFiltroDto filtro)
+        {
+            return Json(_lnUsuario.ObtenerPendientesPorRol(filtro));
+        }
+
         // GET: api/Usuario/5
         public Usuario Get(int idUsuario)
         {

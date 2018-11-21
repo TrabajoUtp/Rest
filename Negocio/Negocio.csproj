@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asignacion\LnRolUsuario.cs" />
     <Compile Include="Asignacion\LnUsuarioCliente.cs" />
     <Compile Include="Gestion\LnFaq.cs" />
     <Compile Include="Gestion\LnIncidencia.cs" />
