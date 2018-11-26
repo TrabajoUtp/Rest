@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\Asignacion\AreaUsuarioDto.cs" />
+    <Compile Include="Dto\Asignacion\AreaUsuarioFiltroDto.cs" />
     <Compile Include="Dto\Asignacion\RolUsuarioDto.cs" />
     <Compile Include="Dto\Asignacion\RolUsuarioFiltroDto.cs" />
     <Compile Include="Dto\Asignacion\UsuarioClienteDto.cs" />
@@ -66,8 +68,6 @@
     <Compile Include="Dto\Maestro\EstadoComboDto.cs" />
     <Compile Include="Dto\Maestro\EstadoDto.cs" />
     <Compile Include="Dto\Maestro\EstadoFiltroDto.cs" />
-    <Compile Include="Dto\Maestro\MotivoDto.cs" />
-    <Compile Include="Dto\Maestro\MotivoFiltroDto.cs" />
     <Compile Include="Dto\Maestro\PaisDto.cs" />
     <Compile Include="Dto\Maestro\PaisFiltroDto.cs" />
     <Compile Include="Dto\Maestro\PrioridadDto.cs" />
@@ -85,6 +85,7 @@
     <Compile Include="Dto\Seguridad\RolFiltroDto.cs" />
     <Compile Include="Dto\Seguridad\UsuarioDto.cs" />
     <Compile Include="Dto\Seguridad\UsuarioFiltroDto.cs" />
+    <Compile Include="Entidades\Asignacion\AreaUsuario.cs" />
     <Compile Include="Entidades\Asignacion\RolUsuario.cs" />
     <Compile Include="Entidades\Asignacion\UsuarioCliente.cs" />
     <Compile Include="Entidades\Gestion\Faq.cs" />
@@ -96,7 +97,6 @@
     <Compile Include="Entidades\Maestro\Contacto.cs" />
     <Compile Include="Entidades\Maestro\Departamento.cs" />
     <Compile Include="Entidades\Maestro\Estado.cs" />
-    <Compile Include="Entidades\Maestro\Motivo.cs" />
     <Compile Include="Entidades\Maestro\Pais.cs" />
     <Compile Include="Entidades\Maestro\Prioridad.cs" />
     <Compile Include="Dto\Maestro\UbigeoDto.cs" />

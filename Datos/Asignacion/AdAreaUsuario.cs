@@ -1,25 +1,25 @@
-﻿using Entidad.Dto.Maestro;
-using Entidad.Entidades.Maestro;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
 using Datos.Helper;
+using Entidad.Dto.Asignacion;
+using Entidad.Entidades.Asignacion;
 using Entidad.Vo;
 
-namespace Datos.Maestro
+namespace Datos.Asignacion
 {
-    public class AdMotivo
+    public class AdAreaUsuario
     {
-        public List<MotivoDto> Obtener(MotivoFiltroDto filtro)
+        public List<AreaUsuarioDto> Obtener(AreaUsuarioFiltroDto filtro)
         {
 
-            List<MotivoDto> lista;
+            List<AreaUsuarioDto> lista;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Obtener;
+                const string query = StoreProcedure.Asignacion_usp_AreaUsuario_ObtenerPorIdArea;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -27,10 +27,11 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    lista = cn.Query<MotivoDto>(query, new
+                    lista = cn.Query<AreaUsuarioDto>(query, new
                         {
                             filtro.Buscar,
                             filtro.IdEstado,
+                            filtro.IdArea,
                             NumeroPagina = filtro.NumberPage,
                             CantidadRegistros = filtro.Length,
                             ColumnaOrden = filtro.ColumnOrder,
@@ -48,35 +49,14 @@ namespace Datos.Maestro
             return lista;
         }
 
-        public List<Motivo> ObtenerCombo(Int32 idEstado)
-        {
-            List<Motivo> lista;
-            const string query = StoreProcedure.Maestro_usp_Motivo_Combo;
-
-            using (var cn = HelperClass.ObtenerConeccion())
-            {
-                if (cn.State == ConnectionState.Closed)
-                {
-                    cn.Open();
-                }
-
-                lista = cn.Query<Motivo>(query, new
-                {
-                    IdEstado = idEstado
-                }, commandType: CommandType.StoredProcedure).ToList();
-
-            }
-            return lista;
-        }
-
-        public Motivo ObtenerPorId(int id)
+        public AreaUsuario ObtenerPorId(int id)
         {
 
-            Motivo entidad;
+            AreaUsuario entidad;
 
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_ObtenerPorId;
+                const string query = StoreProcedure.Asignacion_usp_AreaUsuario_ObtenerPorId;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -84,9 +64,9 @@ namespace Datos.Maestro
                         cn.Open();
                     }
 
-                    entidad = cn.Query<Motivo>(query, new
+                    entidad = cn.Query<AreaUsuario>(query, new
                         {
-                            IdMotivo = id
+                            IdAreaUsuario = id
                         },
                         commandType: CommandType.StoredProcedure).FirstOrDefault();
 
@@ -100,12 +80,12 @@ namespace Datos.Maestro
             return entidad;
         }
 
-        public Int32 Registrar(Motivo entidad)
+        public Int32 Registrar(AreaUsuario entidad)
         {
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Registrar;
+                const string query = StoreProcedure.Asignacion_usp_AreaUsuario_Registrar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -115,44 +95,10 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            entidad.Abreviatura,
-                            entidad.Nombre,
-                            entidad.Observacion,
+                            entidad.IdArea,
+                            entidad.IdUsuario,
                             entidad.IdEstado
                         },
-                        commandType: CommandType.StoredProcedure);
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return respuesta;
-        }
-
-        public Int32 Modificar(Motivo entidad)
-        {
-            Int32 respuesta;
-            try
-            {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Modificar;
-                using (var cn = HelperClass.ObtenerConeccion())
-                {
-                    if (cn.State == ConnectionState.Closed)
-                    {
-                        cn.Open();
-                    }
-
-                    respuesta = cn.Execute(query, new
-                        {
-                            entidad.IdMotivo,
-                            entidad.Abreviatura,
-                            entidad.Nombre,
-                            entidad.Observacion,
-                            entidad.IdEstado
-                    },
                         commandType: CommandType.StoredProcedure);
 
                 }
@@ -170,7 +116,7 @@ namespace Datos.Maestro
             Int32 respuesta;
             try
             {
-                const string query = StoreProcedure.Maestro_usp_Motivo_Eliminar;
+                const string query = StoreProcedure.Asignacion_usp_AreaUsuario_Eliminar;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
@@ -180,7 +126,7 @@ namespace Datos.Maestro
 
                     respuesta = cn.Execute(query, new
                         {
-                            IdMotivo = id
+                            IdAreaUsuario = id
                         },
                         commandType: CommandType.StoredProcedure);
 

@@ -92,6 +92,50 @@ namespace Negocio.Seguridad
 
         }
 
+        public ResultDataTable ObtenerPendientesPorArea(UsuarioFiltroDto filtro)
+        {
+            ResultDataTable result;
+            int totalRegistros = 0;
+            List<UsuarioDto> lista = new List<UsuarioDto>();
+            string mensajeError = "";
+
+            try
+            {
+                if (filtro.IdRol == 0)
+                {
+                    lista = new List<UsuarioDto>();
+                }
+                else
+                {
+                    lista = _adUsuario.ObtenerPendientesPorArea(filtro);
+                }
+
+                if (lista.Any())
+                {
+                    totalRegistros = lista.First().TotalItems;
+                }
+            }
+            catch (Exception ex)
+            {
+                mensajeError = ex.Message;
+            }
+            finally
+            {
+                result = new ResultDataTable
+                {
+                    draw = filtro.Draw,
+                    recordsTotal = totalRegistros,
+                    recordsFiltered = totalRegistros,
+                    data = lista,
+                    error = mensajeError
+                };
+
+            }
+
+            return result;
+
+        }
+
         public List<Usuario> ObtenerCombo(DropDownItem opcionCombo, Int32 idEstado)
         {
             var lista = _adUsuario.ObtenerCombo(idEstado);

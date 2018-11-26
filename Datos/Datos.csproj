@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asignacion\AdAreaUsuario.cs" />
     <Compile Include="Asignacion\AdRolUsuario.cs" />
     <Compile Include="Asignacion\AdUsuarioCliente.cs" />
     <Compile Include="Gestion\AdFaq.cs" />
@@ -60,7 +61,6 @@
     <Compile Include="Maestro\AdCliente.cs" />
     <Compile Include="Maestro\AdContacto.cs" />
     <Compile Include="Maestro\AdEstado.cs" />
-    <Compile Include="Maestro\AdMotivo.cs" />
     <Compile Include="Maestro\AdPais.cs" />
     <Compile Include="Maestro\AdPrioridad.cs" />
     <Compile Include="Maestro\AdTipoCorreo.cs" />

@@ -22,6 +22,7 @@ namespace Entidad.Vo
         public const String Seguridad_usp_Usuario_Modificar = "Seguridad.usp_Usuario_Modificar";
         public const String Seguridad_usp_Usuario_Eliminar = "Seguridad.usp_Usuario_Eliminar";
         public const String Seguridad_usp_Usuario_ObtenerPendientesPorRol = "Seguridad.usp_Usuario_ObtenerPendientesPorRol";
+        public const String Seguridad_usp_Usuario_ObtenerPendientesPorArea = "Seguridad.usp_Usuario_ObtenerPendientesPorArea";
         public const String Seguridad_usp_Usuario_Login = "Seguridad.usp_Usuario_Login";
 
         //Seguridad.Acceso
@@ -31,9 +32,7 @@ namespace Entidad.Vo
         public const String Seguridad_usp_Acceso_Registrar = "Seguridad.usp_Acceso_Registrar";
         public const String Seguridad_usp_Acceso_Modificar = "Seguridad.usp_Acceso_Modificar";
         public const String Seguridad_usp_Acceso_Eliminar = "Seguridad.usp_Acceso_Eliminar";
-
-        //Seguridad.AccesoRol
-        public const String Seguridad_usp_AccesoRol_ObtenerPorIdUsuario = "Seguridad.usp_AccesoRol_ObtenerPorIdUsuario";
+        public const String Seguridad_usp_Acceso_ObtenerPorIdUsuario = "Seguridad.usp_Acceso_ObtenerPorIdUsuario";
 
         //Maestro.Cliente
         public const String Maestro_usp_Cliente_Obtener = "Maestro.usp_Cliente_Obtener";
@@ -164,6 +163,11 @@ namespace Entidad.Vo
         public const String Asignacion_usp_RolUsuario_Registrar = "Asignacion.usp_RolUsuario_Registrar";
         public const String Asignacion_usp_RolUsuario_Eliminar = "Asignacion.usp_RolUsuario_Eliminar";
         public const String Asignacion_usp_RolUsuario_ObtenerPorId = "Asignacion.usp_RolUsuario_ObtenerPorId";
+
+        public const String Asignacion_usp_AreaUsuario_ObtenerPorIdArea = "Asignacion.usp_AreaUsuario_ObtenerPorIdArea";
+        public const String Asignacion_usp_AreaUsuario_Registrar = "Asignacion.usp_AreaUsuario_Registrar";
+        public const String Asignacion_usp_AreaUsuario_Eliminar = "Asignacion.usp_AreaUsuario_Eliminar";
+        public const String Asignacion_usp_AreaUsuario_ObtenerPorId = "Asignacion.usp_AreaUsuario_ObtenerPorId";
 
     }
 }

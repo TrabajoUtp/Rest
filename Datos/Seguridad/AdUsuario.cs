@@ -83,6 +83,41 @@ namespace Datos.Seguridad
             return lista;
         }
 
+        public List<UsuarioDto> ObtenerPendientesPorArea(UsuarioFiltroDto filtro)
+        {
+
+            List<UsuarioDto> lista;
+
+            try
+            {
+                const string query = StoreProcedure.Seguridad_usp_Usuario_ObtenerPendientesPorArea;
+                using (var cn = HelperClass.ObtenerConeccion())
+                {
+                    if (cn.State == ConnectionState.Closed)
+                    {
+                        cn.Open();
+                    }
+
+                    lista = cn.Query<UsuarioDto>(query, new
+                        {
+                            filtro.Buscar,
+                            filtro.IdEstado,
+                            filtro.IdArea,
+                            ColumnaOrden = filtro.ColumnOrder,
+                            DireccionOrden = filtro.OrderDirection
+                        },
+                        commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return lista;
+        }
+
         public List<Usuario> ObtenerCombo(Int32 idEstado)
         {
             List<Usuario> lista;

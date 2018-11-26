@@ -189,6 +189,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Auth\AuthorizeAttribute.cs" />
+    <Compile Include="Controllers\Asignacion\AreaUsuarioController.cs" />
     <Compile Include="Controllers\Asignacion\RolUsuarioController.cs" />
     <Compile Include="Controllers\Asignacion\UsuarioClienteController.cs" />
     <Compile Include="Controllers\Gestion\IncidenciaController.cs" />
@@ -200,7 +201,6 @@
     <Compile Include="Controllers\Maestro\ContactoController.cs" />
     <Compile Include="Controllers\Maestro\EstadoController.cs" />
     <Compile Include="Controllers\Gestion\FaqController.cs" />
-    <Compile Include="Controllers\Maestro\MotivoController.cs" />
     <Compile Include="Controllers\Maestro\PaisController.cs" />
     <Compile Include="Controllers\Maestro\PrioridadController.cs" />
     <Compile Include="Controllers\Maestro\TipoCorreoController.cs" />

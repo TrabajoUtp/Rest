@@ -39,7 +39,7 @@ namespace Datos.Seguridad
 
             try
             {
-                const string query = StoreProcedure.Seguridad_usp_AccesoRol_ObtenerPorIdUsuario;
+                const string query = StoreProcedure.Seguridad_usp_Acceso_ObtenerPorIdUsuario;
                 using (var cn = HelperClass.ObtenerConeccion())
                 {
                     if (cn.State == ConnectionState.Closed)
